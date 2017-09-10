@@ -1,0 +1,17 @@
+# Created by .ignore support plugin (hsz.mobi)
+.github/
+.gradle/
+.idea/
+README.md
+build.common.gradle
+build.release.gradle
+build.gradle
+build/
+doc/
+ftc_app-master.iml
+gen/
+gradle/
+gradlew
+gradlew.bat
+libs/
+settings.gradle
