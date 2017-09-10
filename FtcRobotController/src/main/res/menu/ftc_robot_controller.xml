@@ -71,20 +71,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     android:title="@string/program_and_manage_menu_item"/>
 
   <item
-      android:id="@+id/action_inspection_mode"
-      android:orderInCategory="600"
-      android:showAsAction="never"
-      android:title="@string/inspection_mode_menu_item"/>
+          android:id="@+id/action_inspection_mode"
+          android:orderInCategory="999"
+          android:title="@string/inspection_mode_menu_item"/>
 
   <item
-    android:id="@+id/action_about"
-    android:orderInCategory="999"
-    android:icon="@android:drawable/ic_menu_info_details"
-    android:title="@string/about_menu_item"/>
-
+          android:id="@+id/action_about"
+          android:orderInCategory="1000"
+          android:icon="@android:drawable/ic_menu_info_details"
+          android:title="@string/about_menu_item"/>
   <item
     android:id="@+id/action_exit_app"
-    android:orderInCategory="1000"
+    android:orderInCategory="1001"
     android:icon="@android:drawable/ic_menu_info_details"
     android:title="@string/exit_menu_item"/>
 
