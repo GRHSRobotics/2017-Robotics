@@ -17,6 +17,9 @@ public class TestOpMode extends OpMode {
 	@Override
 	public void loop() {
 
+		telemetry.addData("time", getRuntime());
+		telemetry.update();
+
 	}
 
 }
