@@ -11,31 +11,31 @@ import com.qualcomm.robotcore.hardware.Servo;
  * Created by AllTheMegahertz on 9/10/2017.
  */
 
-@Autonomous(name="Basic Debug", group="debug")
-public class TestOpMode extends OpMode {
+@Autonomous(name="Servo Debug", group="debug")
+public class ServoDebug extends OpMode {
 
-	private Servo servo;
+	private Servo leftServo;
+	private Servo rightServo;
 
 	@Override
 	public void init() {
 
-		servo = hardwareMap.servo.get("linearServo");
-		servo.setPosition(0.82);
+		leftServo = hardwareMap.servo.get("leftServo");
+		rightServo = hardwareMap.servo.get("rightServo");
+		leftServo.setPosition(0.17);
+		rightServo.setPosition(0.17);
 
 	}
 
 	@Override
 	public void loop() {
 
-		if (servo.getPosition() > 0.8) {
-			servo.setPosition(0.17);
-		}
-		else if (servo.getPosition() < 0.2) {
-			servo.setPosition(0.82);
-		}
+		leftServo.setPosition(0.82);
+		rightServo.setPosition(0.82);
 
 		telemetry.addData("time", getRuntime());
-		telemetry.addData("servoPosition", servo.getPosition());
+		telemetry.addData("leftServoPosition", leftServo.getPosition());
+		telemetry.addData("rightServoPosition", rightServo.getPosition());
 		telemetry.update();
 
 	}
