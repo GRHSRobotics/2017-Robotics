@@ -20,17 +20,18 @@ public class TestOpMode extends OpMode {
 	public void init() {
 
 		servo = hardwareMap.servo.get("linearServo");
+		servo.setPosition(0.82);
 
 	}
 
 	@Override
 	public void loop() {
 
-		if (servo.getPosition() > 1) {
-			servo.setPosition(servo.getPosition() + 0.01);
+		if (servo.getPosition() > 0.8) {
+			servo.setPosition(0.17);
 		}
-		else if (servo.getPosition() > 0) {
-			servo.setPosition(servo.getPosition() - 0.01);
+		else if (servo.getPosition() < 0.2) {
+			servo.setPosition(0.82);
 		}
 
 		telemetry.addData("time", getRuntime());
