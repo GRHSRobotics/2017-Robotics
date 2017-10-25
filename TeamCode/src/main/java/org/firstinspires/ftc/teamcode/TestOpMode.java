@@ -26,6 +26,13 @@ public class TestOpMode extends OpMode {
 	@Override
 	public void loop() {
 
+		if (servo.getPosition() > 1) {
+			servo.setPosition(servo.getPosition() + 0.01);
+		}
+		else if (servo.getPosition() > 0) {
+			servo.setPosition(servo.getPosition() - 0.01);
+		}
+
 		telemetry.addData("time", getRuntime());
 		telemetry.addData("servoPosition", servo.getPosition());
 		telemetry.update();
