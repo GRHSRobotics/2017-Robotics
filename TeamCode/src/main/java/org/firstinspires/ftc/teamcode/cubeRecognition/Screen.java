@@ -91,6 +91,8 @@ public class Screen extends SurfaceView implements Runnable, SurfaceHolder.Callb
 
 	@Override
 	public void surfaceDestroyed(SurfaceHolder surfaceHolder) {
-
+		camera.stopPreview();
+		camera.release();
+		camera = null;
 	}
 }
