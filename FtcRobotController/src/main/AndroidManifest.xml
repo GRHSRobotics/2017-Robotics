@@ -5,7 +5,9 @@
           android:versionCode="24"
           android:versionName="3.4">
 
-  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
 
   <application
     android:allowBackup="true"
