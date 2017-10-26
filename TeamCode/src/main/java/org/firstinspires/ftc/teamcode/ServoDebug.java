@@ -24,14 +24,24 @@ public class ServoDebug extends OpMode {
 		rightServo = hardwareMap.servo.get("rightServo");
 		leftServo.setPosition(0.17);
 		rightServo.setPosition(0.17);
-
 	}
 
 	@Override
 	public void loop() {
 
-		leftServo.setPosition(0.82);
-		rightServo.setPosition(0.82);
+		if (leftServo.getPosition() > 0.17 && gamepad1.left_trigger > 0) {
+			leftServo.setPosition(leftServo.getPosition() - 0.01);
+		}
+		else if (leftServo.getPosition() < 0.81 && gamepad1.left_bumper) {
+			leftServo.setPosition(leftServo.getPosition() + 0.01);
+		}
+
+		if (rightServo.getPosition() > 0.17 && gamepad1.right_trigger > 0) {
+			rightServo.setPosition(rightServo.getPosition() - 0.01);
+		}
+		else if (rightServo.getPosition() < 0.81 && gamepad1.right_bumper) {
+			rightServo.setPosition(rightServo.getPosition() + 0.01);
+		}
 
 		telemetry.addData("time", getRuntime());
 		telemetry.addData("leftServoPosition", leftServo.getPosition());
