@@ -30,7 +30,11 @@ public class Screen extends SurfaceView implements SurfaceHolder.Callback, Camer
 
 	public Color getColor(int x, int y) {
 
-		for (int i )
+		int r = pixels[(pixels.length / 4) * y + x + 1];
+		int g = pixels[(pixels.length / 4) * y + x + 2];
+		int b = pixels[(pixels.length / 4) * y + x + 3];
+
+		return new Color(r, g, b);
 
 	}
 
