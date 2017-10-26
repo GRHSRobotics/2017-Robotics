@@ -43,6 +43,20 @@ public class ServoDebug extends OpMode {
 			rightServo.setPosition(rightServo.getPosition() + 0.01);
 		}
 
+		if (gamepad1.dpad_up) {
+			leftServo.setPosition(0.81);
+		}
+		else if (gamepad1.dpad_down) {
+			leftServo.setPosition(0.17);
+		}
+
+		if (gamepad1.dpad_right) {
+			rightServo.setPosition(0.81);
+		}
+		else if (gamepad1.dpad_left) {
+			rightServo.setPosition(0.17);
+		}
+
 		telemetry.addData("time", getRuntime());
 		telemetry.addData("leftServoPosition", leftServo.getPosition());
 		telemetry.addData("rightServoPosition", rightServo.getPosition());
