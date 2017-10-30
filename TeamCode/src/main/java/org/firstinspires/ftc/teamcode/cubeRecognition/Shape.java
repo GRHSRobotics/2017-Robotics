@@ -24,7 +24,7 @@ public class Shape {
 		Color[] colors = new Color[vertices.length];
 
 		for (int i = 0; i < vertices.length; i++) {
-			colors[i] = screen.getColor(vertices[i][0], vertices[i][0]);
+//			colors[i] = screen.getColor(vertices[i][0], vertices[i][0]);
 		}
 
 		return Color.average(colors);

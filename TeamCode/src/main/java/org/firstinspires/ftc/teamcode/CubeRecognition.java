@@ -5,6 +5,7 @@ import android.os.Looper;
 import android.view.Surface;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import org.firstinspires.ftc.teamcode.cubeRecognition.CameraPreview;
 import org.firstinspires.ftc.teamcode.cubeRecognition.Color;
 import org.firstinspires.ftc.teamcode.cubeRecognition.Screen;
 
@@ -22,12 +23,14 @@ public class CubeRecognition extends OpMode {
 	@Override
 	public void loop() {
 
-
+		if (!screen.isOpen()) {
+			screen.openCamera();
+		}
 
 //		Color color = screen.getColor(250, 250);
 //
 //		telemetry.addData("250, 250", color.getR() + " " + color.getG() + " " + color.getB());
-		telemetry.update();
+//		telemetry.update();
 
 	}
 
