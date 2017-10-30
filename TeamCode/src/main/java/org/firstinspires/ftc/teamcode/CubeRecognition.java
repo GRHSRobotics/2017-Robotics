@@ -23,6 +23,9 @@ public class CubeRecognition extends OpMode {
 	@Override
 	public void loop() {
 
+		telemetry.addData("camera", Boolean.toString(screen.isOpen()));
+		telemetry.update();
+
 		if (!screen.isOpen()) {
 			screen.openCamera();
 		}
