@@ -6,12 +6,10 @@ import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity
 public class Shape {
 
 	private int[][] vertices;
-	private Screen screen;
 
-	public Shape(int[][] vertices, Screen screen) {
+	public Shape(int[][] vertices) {
 
 		this.vertices = vertices;
-		this.screen = screen;
 
 	}
 

@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import android.content.Context;
 import android.content.Intent;
 import android.hardware.Camera;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -17,7 +18,10 @@ public class CubeRecognition extends OpMode {
 	@Override
 	public void init() {
 
-		Intent intent = new Intent(hardwareMap.appContext, CameraView.class);
+		Context appContext = hardwareMap.appContext;
+		Class cameraView = CameraView.class;
+
+		Intent intent = new Intent(appContext, cameraView);
 		hardwareMap.appContext.startActivity(intent);
 
 	}

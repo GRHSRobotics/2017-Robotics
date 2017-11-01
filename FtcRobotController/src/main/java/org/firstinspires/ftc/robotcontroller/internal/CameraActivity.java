@@ -33,14 +33,6 @@ public class CameraActivity extends Activity {
 			cameraView.addView(mCameraView);
 		}
 
-		ImageButton imgClose = (ImageButton) findViewById(R.id.imgClose);
-		imgClose.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				System.exit(0);
-			}
-		});
-
 	}
 
 }
