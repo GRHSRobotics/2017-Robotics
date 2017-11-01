@@ -1,34 +1,29 @@
 package org.firstinspires.ftc.teamcode;
 
-import android.graphics.SurfaceTexture;
-import android.os.Looper;
-import android.view.Surface;
+import android.content.Intent;
+import android.hardware.Camera;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import org.firstinspires.ftc.teamcode.cubeRecognition.CameraPreview;
-import org.firstinspires.ftc.teamcode.cubeRecognition.Color;
-import org.firstinspires.ftc.teamcode.cubeRecognition.Screen;
+import org.firstinspires.ftc.robotcontroller.internal.CameraActivity;
+import org.firstinspires.ftc.robotcontroller.internal.CameraView;
+import org.firstinspires.ftc.robotcontroller.internal.FtcRobotControllerActivity;
 
 @Autonomous(name = "cubeRecognition", group = "Autonomous")
 public class CubeRecognition extends OpMode {
 
-	private Screen screen;
+	private Camera mCamera = null;
+	private CameraView mCameraView = null;
 
 	@Override
 	public void init() {
-		Looper.prepare();
-		screen = new Screen(hardwareMap.appContext);
+
+		Intent intent = new Intent(hardwareMap.appContext, CameraView.class);
+		hardwareMap.appContext.startActivity(intent);
+
 	}
 
 	@Override
 	public void loop() {
-
-		telemetry.addData("camera", Boolean.toString(screen.isOpen()));
-		telemetry.update();
-
-		if (!screen.isOpen()) {
-			screen.openCamera();
-		}
 
 //		Color color = screen.getColor(250, 250);
 //
