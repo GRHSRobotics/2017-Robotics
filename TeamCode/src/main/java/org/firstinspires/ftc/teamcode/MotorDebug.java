@@ -4,21 +4,32 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
+import java.util.ArrayList;
+
 @Autonomous(name = "motorDebug", group = "debug")
 public class MotorDebug extends OpMode {
 
-	private DcMotor motor;
+	private DcMotor motorFrontLeft;
+	private DcMotor motorFrontRight;
+	private DcMotor motorBackLeft;
+	private DcMotor motorBackRight;
 
 	@Override
 	public void init() {
-		motor = hardwareMap.dcMotor.get("motor0");
+		motorFrontLeft = hardwareMap.dcMotor.get("motorFrontLeft");
+		motorFrontRight = hardwareMap.dcMotor.get("motorFrontRight");
+		motorBackLeft = hardwareMap.dcMotor.get("motorBackLeft");
+		motorBackRight = hardwareMap.dcMotor.get("motorBackRight");
 	}
 
 	@Override
 	public void loop() {
 
-		motor.setPower(1);
-		telemetry.addData("motorPosition", motor.getCurrentPosition());
+		motorFrontLeft.setPower(gamepad1.left_stick_y);
+		motorFrontRight.setPower(gamepad1.left_stick_y);
+		motorBackLeft.setPower(gamepad1.left_stick_y);
+		motorBackRight.setPower(gamepad1.left_stick_y);
+
 		telemetry.update();
 		
 	}
