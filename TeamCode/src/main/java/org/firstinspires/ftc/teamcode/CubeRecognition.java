@@ -33,4 +33,12 @@ public class CubeRecognition extends OpMode {
 
 	}
 
+	@Override
+	public void stop() {
+
+		System.exit(0);
+		super.stop();
+
+	}
+
 }
