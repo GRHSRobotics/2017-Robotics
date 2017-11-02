@@ -18,10 +18,7 @@ public class CubeRecognition extends OpMode {
 	@Override
 	public void init() {
 
-		Context appContext = hardwareMap.appContext;
-		Class cameraView = CameraView.class;
-
-		Intent intent = new Intent(appContext, cameraView);
+		Intent intent = new Intent(hardwareMap.appContext, CameraActivity.class);
 		hardwareMap.appContext.startActivity(intent);
 
 	}
