@@ -25,10 +25,10 @@ public class MotorDebug extends OpMode {
 	@Override
 	public void loop() {
 
-		motorFrontLeft.setPower(gamepad1.left_stick_y);
-		motorFrontRight.setPower(gamepad1.left_stick_y);
-		motorBackLeft.setPower(gamepad1.left_stick_y);
-		motorBackRight.setPower(gamepad1.left_stick_y);
+		motorFrontLeft.setPower(-(gamepad1.left_stick_y - gamepad1.left_stick_x) / 2);
+		motorFrontRight.setPower((gamepad1.left_stick_y + gamepad1.left_stick_x) / 2);
+		motorBackLeft.setPower(-(gamepad1.left_stick_y + gamepad1.left_stick_x) / 2);
+		motorBackRight.setPower((gamepad1.left_stick_y - gamepad1.left_stick_x) / 2);
 
 		telemetry.update();
 		
