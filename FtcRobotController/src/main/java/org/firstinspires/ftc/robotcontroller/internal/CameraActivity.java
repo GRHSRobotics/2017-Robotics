@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.robotcontroller.internal;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import com.qualcomm.ftcrobotcontroller.R;
+
+import java.io.InputStream;
 
 public class CameraActivity extends Activity {
 
@@ -32,6 +35,17 @@ public class CameraActivity extends Activity {
 			FrameLayout cameraView = (FrameLayout) findViewById(R.id.camera_view);
 			cameraView.addView(mCameraView);
 		}
+
+	}
+
+	public Bitmap getPixels() {
+
+		View view = getWindow().getDecorView().getRootView();
+		view.setDrawingCacheEnabled(true);
+		Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
+		view.setDrawingCacheEnabled(false);
+
+		return bitmap;
 
 	}
 
