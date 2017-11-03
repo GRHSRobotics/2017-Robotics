@@ -1,10 +1,14 @@
 package org.firstinspires.ftc.teamcode;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.hardware.Camera;
 import android.os.Looper;
+import android.provider.Settings;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -38,9 +42,19 @@ public class CubeRecognition extends OpMode {
 	@Override
 	public void loop() {
 
-		Bitmap pixels = cameraActivity.getPixels();
+		Window window = ((Activity) hardwareMap.appContext).getWindow();
 
-		telemetry.addData("200x200", pixels.getPixel(200, 200));
+		if (window != null) {
+
+			Bitmap bitmap = getPixels(window);
+			for (int x = 0; x < 200; x++) {
+				for (int y = 0; y < 200; y++) {
+					telemetry.addData(x + " " + y, bitmap.getPixel(x, y));
+				}
+			}
+
+		}
+
 		telemetry.update();
 
 //		Color color = screen.getColor(250, 250);
@@ -55,6 +69,17 @@ public class CubeRecognition extends OpMode {
 
 		System.exit(0);
 		super.stop();
+
+	}
+
+	public Bitmap getPixels(Window window) {
+
+		View view = window.getDecorView().getRootView();
+		view.setDrawingCacheEnabled(true);
+		Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
+		view.setDrawingCacheEnabled(false);
+
+		return bitmap;
 
 	}
 

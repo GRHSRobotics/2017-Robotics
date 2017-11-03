@@ -38,15 +38,4 @@ public class CameraActivity extends Activity {
 
 	}
 
-	public Bitmap getPixels() {
-
-		View view = getWindow().getDecorView().getRootView();
-		view.setDrawingCacheEnabled(true);
-		Bitmap bitmap = Bitmap.createBitmap(view.getDrawingCache());
-		view.setDrawingCacheEnabled(false);
-
-		return bitmap;
-
-	}
-
 }
