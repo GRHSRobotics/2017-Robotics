@@ -17,6 +17,9 @@ public class MotorDebug extends OpMode {
 	private Servo servo0;
 	private Servo servo1;
 
+	private Gamepad currentGamepad;
+	private Gamepad previousGamepad;
+
 	@Override
 	public void init() {
 
@@ -29,10 +32,14 @@ public class MotorDebug extends OpMode {
 		servo0 = hardwareMap.servo.get("servo0");
 		servo1 = hardwareMap.servo.get("servo1");
 
+		currentGamepad = new org.firstinspires.ftc.teamcode.Gamepad(gamepad1);
+
 	}
 
 	@Override
 	public void loop() {
+
+		com.qualcomm.robotcore.hardware.Gamepad gamepad = currentGamepad.getGamepad();
 
 		motorFrontLeft.setPower(clamp(gamepad1.left_stick_y + gamepad1.left_stick_x));
 		motorFrontRight.setPower(clamp(-gamepad1.right_stick_y + gamepad1.right_stick_x));
@@ -49,12 +56,23 @@ public class MotorDebug extends OpMode {
 			servo1.setPosition(0.725);
 		}
 
+		//Incrementation of arm position for debugging
+		if (gamepad1.a && !previousGamepad.getGamepad().a) {
+			motorArm.setTargetPosition(motorArm.getCurrentPosition() + 10);
+		}
+		else if (gamepad1.b && !previousGamepad.getGamepad().b) {
+			motorArm.setTargetPosition(motorArm.getCurrentPosition() - 10);
+		}
+
 		telemetry.addData("servo0", servo0.getPosition());
 		telemetry.addData("servo1", servo1.getPosition());
 		telemetry.addData("arm", motorArm.getCurrentPosition());
+		telemetry.addData("armTarget", motorArm.getTargetPosition());
 		telemetry.addData("time", getRuntime());
 
 		telemetry.update();
+
+		previousGamepad = new Gamepad(gamepad1);
 		
 	}
 
@@ -64,6 +82,7 @@ public class MotorDebug extends OpMode {
 		motorBackRight.setPower(0);
 		motorFrontLeft.setPower(0);
 		motorFrontRight.setPower(0);
+		motorArm.setPower(0);
 		super.stop();
 	}
 
