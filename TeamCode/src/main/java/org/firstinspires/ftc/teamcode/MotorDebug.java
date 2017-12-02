@@ -57,11 +57,17 @@ public class MotorDebug extends OpMode {
 		}
 
 		//Incrementation of arm position for debugging
+		int incrementationSpeed = 10;
+
+		if (gamepad1.back) {
+			incrementationSpeed = 50;
+		}
+
 		if (gamepad1.a && !previousGamepad.getGamepad().a) {
-			motorArm.setTargetPosition(motorArm.getCurrentPosition() + 10);
+			motorArm.setTargetPosition(motorArm.getCurrentPosition() + incrementationSpeed);
 		}
 		else if (gamepad1.b && !previousGamepad.getGamepad().b) {
-			motorArm.setTargetPosition(motorArm.getCurrentPosition() - 10);
+			motorArm.setTargetPosition(motorArm.getCurrentPosition() - incrementationSpeed);
 		}
 
 		telemetry.addData("servo0", servo0.getPosition());
