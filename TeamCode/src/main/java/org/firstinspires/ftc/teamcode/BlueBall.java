@@ -10,7 +10,7 @@ public class BlueBall extends OpMode {
 
 	@Override
 	public void init() {
-		ballAutonomous = new BallAutonomous(hardwareMap, TeamColor.Blue);
+		ballAutonomous = new BallAutonomous(hardwareMap, telemetry, TeamColor.Blue);
 		ballAutonomous.init();
 	}
 
