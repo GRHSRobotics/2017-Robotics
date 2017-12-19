@@ -9,7 +9,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import java.util.ArrayList;
 
-public class BallAutonomous extends VirtualOpMode {
+public class BallAutonomous implements VirtualOpMode {
 
 	private TeamColor teamColor;
 	private HardwareMap hardwareMap;

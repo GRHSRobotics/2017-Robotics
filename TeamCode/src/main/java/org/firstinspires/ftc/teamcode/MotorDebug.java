@@ -1,16 +1,11 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.*;
 
 @TeleOp(name = "motorDebug", group = "debug")
-public class MotorDebug extends OpMode {
+public class MotorDebug extends MotorOpMode {
 
-	private DcMotor motorFrontLeft;
-	private DcMotor motorFrontRight;
-	private DcMotor motorBackLeft;
-	private DcMotor motorBackRight;
 	private DcMotor motorArm;
 	private Servo leftServo;
 	private Servo rightServo;
