@@ -2,37 +2,36 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import java.util.ArrayList;
 
-public abstract class MotorOpMode extends OpMode {
+public class MotorOpMode {
 
-	protected DcMotor motorFrontLeft;
-	protected DcMotor motorFrontRight;
-	protected DcMotor motorBackLeft;
-	protected DcMotor motorBackRight;
+	DcMotor motorFrontLeft;
+	DcMotor motorFrontRight;
+	DcMotor motorBackLeft;
+	DcMotor motorBackRight;
 
-	private ArrayList<DcMotor> motors;
+	ArrayList<DcMotor> motors;
 
 	public void init() {
+		DcMotor motorFrontLeft = hardwareMap.dcMotor.get("motorFrontLeft");
+		DcMotor motorFrontRight = hardwareMap.dcMotor.get("motorFrontRight");
+		DcMotor motorBackLeft = hardwareMap.dcMotor.get("motorBackLeft");
+		DcMotor motorBackRight = hardwareMap.dcMotor.get("motorBackRight");
+	}
+	
+	public ArrayList<DcMotor> getMotors(HardwareMap hardwareMap) {
+		return motors;
+	}
 
-		motorFrontLeft = hardwareMap.dcMotor.get("motorFrontLeft");
-		motorFrontRight = hardwareMap.dcMotor.get("motorFrontRight");
-		motorBackLeft = hardwareMap.dcMotor.get("motorBackLeft");
-		motorBackRight = hardwareMap.dcMotor.get("motorBackRight");
-
-		motors.add(motorFrontLeft);
-		motors.add(motorFrontRight);
-		motors.add(motorBackLeft);
-		motors.add(motorBackRight);
+	//TODO: Implement method
+	public void turn() {
 
 	}
 
-	protected void turn(Direction direction) {
-
-	}
-
-	protected void enableBreaking(boolean enable) {
+	public void enableBreaking(boolean enable, ArrayList<DcMotor> motors) {
 
 		DcMotor.ZeroPowerBehavior behavior;
 
