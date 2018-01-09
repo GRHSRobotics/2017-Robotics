@@ -78,7 +78,7 @@ public class BallAutonomous extends VirtualOpMode {
 		double deltaT = runtime - startTime;
 
 		if (deltaT <= 1) {
-			colorServo.setPosition(0.65);
+			colorServo.setPosition(0.6);
 		}
 
 		else if (deltaT <= 1.5 && !locked) {
