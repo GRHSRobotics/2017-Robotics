@@ -1,11 +1,9 @@
 package org.firstinspires.ftc.teamcode;
 
 import android.graphics.Color;
-import com.qualcomm.robotcore.hardware.ColorSensor;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.*;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.robotcore.internal.android.dx.util.HexParser;
 
 import java.util.ArrayList;
 
@@ -20,7 +18,7 @@ public class BallAutonomous extends VirtualOpMode {
 	private DcMotor motorBackLeft;
 	private DcMotor motorBackRight;
 	private Servo colorServo;
-//	private ColorSensor rightColorSensor;
+	private ColorSensor rightColorSensor;
 	private ColorSensor leftColorSensor;
 
 	private double startTime = 0;
@@ -47,9 +45,12 @@ public class BallAutonomous extends VirtualOpMode {
 		motorBackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 		colorServo = hardwareMap.servo.get("colorServo");
-//		rightColorSensor = hardwareMap.colorSensor.get("rightColorSensor");
+		rightColorSensor = hardwareMap.colorSensor.get("rightColorSensor");
 		leftColorSensor = hardwareMap.colorSensor.get("leftColorSensor");
-//		rightColorSensor.enableLed(true);
+		rightColorSensor.setI2cAddress(I2cAddr.create8bit(0x3c));
+		leftColorSensor.setI2cAddress(I2cAddr.create8bit(0x3e));
+
+		rightColorSensor.enableLed(true);
 		leftColorSensor.enableLed(true);
 
 		colorServo.setPosition(0);
@@ -61,6 +62,7 @@ public class BallAutonomous extends VirtualOpMode {
 
 		telemetry.addData("team", teamColor);
 		telemetry.addData("left", leftColorSensor.red() + " " + leftColorSensor.green() + " " + leftColorSensor.blue() + " " + leftColorSensor.toString());
+		telemetry.addData("right", rightColorSensor.red() + " " + rightColorSensor.green() + " " + rightColorSensor.blue() + " " + rightColorSensor.toString());
 		telemetry.update();
 
 		if (colorServo.getPosition() != 0) {
