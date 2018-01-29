@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.GyroSensor;
@@ -19,7 +19,7 @@ public class GyroTest extends OpMode {
 
 	@Override
 	public void init() {
-
+    
 		motorFrontLeft = hardwareMap.dcMotor.get("motorFrontLeft");
 		motorFrontRight = hardwareMap.dcMotor.get("motorFrontRight");
 		motorBackLeft = hardwareMap.dcMotor.get("motorBackLeft");
@@ -33,12 +33,12 @@ public class GyroTest extends OpMode {
 		motorBackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
 
 		gyroSensor.calibrate();
-
+    
 	}
 
 	@Override
 	public void loop() {
-
+    
 		if (gyroSensor.isCalibrating()) {
 			time = System.currentTimeMillis() / 1000;
 			telemetry.addLine("Calibrating gyro...");

@@ -1,11 +1,9 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.hardware.HardwareMap;
+public interface VirtualOpMode {
 
-public abstract class VirtualOpMode {
+	void init();
 
-	public abstract void init();
-
-	public abstract void loop(double runtime);
+	void loop(double runtime);
 
 }

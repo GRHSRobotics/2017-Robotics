@@ -1,18 +1,11 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.ColorSensor;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.*;
 
 @TeleOp(name = "motorDebug", group = "debug")
-public class MotorDebug extends OpMode {
+public class MotorDebug extends MotorOpMode {
 
-	private DcMotor motorFrontLeft;
-	private DcMotor motorFrontRight;
-	private DcMotor motorBackLeft;
-	private DcMotor motorBackRight;
 	private DcMotor motorArm;
 	private Servo upperLeftServo;
 	private Servo lowerLeftServo;
@@ -21,6 +14,7 @@ public class MotorDebug extends OpMode {
 	private Servo colorServo;
 	private ColorSensor leftColorSensor;
 	private ColorSensor rightColorSensor;
+	private GyroSensor gyroscope;
 
 	private Gamepad currentGamepad;
 	private Gamepad previousGamepad;
@@ -53,6 +47,8 @@ public class MotorDebug extends OpMode {
 
 		currentGamepad = new Gamepad(gamepad1);
 		previousPosition = motorArm.getCurrentPosition();
+
+		gyroscope = hardwareMap.gyroSensor.get("gyroscope");
 
 	}
 
@@ -107,6 +103,12 @@ public class MotorDebug extends OpMode {
 			motorArm.setTargetPosition(motorArm.getCurrentPosition() - incrementationSpeed);
 		}
 
+		telemetry.addData("heading", gyroscope.getHeading());
+		telemetry.addData("gyroX", gyroscope.rawX());
+		telemetry.addData("gyroY", gyroscope.rawY());
+		telemetry.addData("gyroZ", gyroscope.rawZ());
+		telemetry.addData("leftServo", leftServo.getPosition());
+		telemetry.addData("rightServo", rightServo.getPosition());
 		telemetry.addData("upperLeftServo", upperLeftServo.getPosition());
 		telemetry.addData("lowerLeftServo", lowerLeftServo.getPosition());
 		telemetry.addData("arm", motorArm.getCurrentPosition());
