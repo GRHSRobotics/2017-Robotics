@@ -14,7 +14,7 @@ public class GyroTest extends OpMode {
 	private DcMotor motorBackRight;
 
 	private GyroSensor gyroSensor;
-	private long time;
+	private double time;
 	private int spins;
 
 	@Override
@@ -34,34 +34,53 @@ public class GyroTest extends OpMode {
 
 		gyroSensor.calibrate();
 
-		time = System.currentTimeMillis();
-
 	}
 
 	@Override
 	public void loop() {
 
+		if (gyroSensor.isCalibrating()) {
+			time = System.currentTimeMillis() / 1000;
+			telemetry.addLine("Calibrating gyro...");
+			return;
+		}
+
 		int heading = gyroSensor.getHeading();
-		if (!rotateToPosition(0) || System.currentTimeMillis() > time + 10000);
-		else if (!rotateToPosition(90) || System.currentTimeMillis() > time + 20000);
-		else if (!rotateToPosition(180) || System.currentTimeMillis() > time + 30000);
-		else if (!rotateToPosition(270) || System.currentTimeMillis() > time + 40000);
-		else if (!rotateToPosition(360) || System.currentTimeMillis() > time + 50000);
+		double delta = System.currentTimeMillis() / 1000 - time;
+		telemetry.addData("delta", delta);
+
+		if (delta < 5) {
+			rotateToPosition(0);
+		} else if (delta < 10) {
+			rotateToPosition(90);
+		} else if (delta < 15) {
+			rotateToPosition(180);
+		} else if (delta < 20) {
+			rotateToPosition(270);
+		}  else {
+			rotateToPosition(0);
+		}
 
 	}
 
 	public boolean rotateToPosition(int position) {
 
+		int heading = clamp(gyroSensor.getHeading());
+		position = clamp(position + spins * 360, false);
+
 		final int buffer = 10;
+
+		int delta = Math.abs(position - heading);
+		if (delta > 180) {
+			position = 360 - position;
+		}
+
 		int high = position + buffer + spins * 360;
 		int low = position - buffer + spins * 360;
 
-		int heading = gyroSensor.getHeading();
-
 		telemetry.addData("heading", heading);
 		telemetry.addData("target", position);
-		telemetry.addData("high", high);
-		telemetry.addData("low", low);
+		telemetry.addData("clamp" , clamp(position + 180, false));
 
 		if (heading < high && heading > low) {
 
@@ -73,7 +92,7 @@ public class GyroTest extends OpMode {
 
 		}
 
-		else if (heading <= low && heading < clamp(position + 180)) {
+		else if (heading <= low && heading < position) {
 
 			motorBackLeft.setPower(0.25);
 			motorBackRight.setPower(0.25);
@@ -82,7 +101,7 @@ public class GyroTest extends OpMode {
 
 		}
 
-		else if (heading >= high && heading <= clamp(position + 180)) {
+		else if (heading >= high && heading >= position) {
 
 			motorBackLeft.setPower(-0.25);
 			motorBackRight.setPower(-0.25);
@@ -104,6 +123,24 @@ public class GyroTest extends OpMode {
 
 		if (i < 0) {
 			spins--;
+			return i + 360;
+		}
+
+		return i;
+
+	}
+
+	private int clamp(int i, boolean b) {
+
+		if (b) {
+			return clamp(i);
+		}
+
+		if (i > 360) {
+			return i - 360;
+		}
+
+		if (i < 0) {
 			return i + 360;
 		}
 
