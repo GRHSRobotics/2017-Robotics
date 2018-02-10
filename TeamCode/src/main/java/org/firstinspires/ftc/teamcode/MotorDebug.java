@@ -96,8 +96,6 @@ public class MotorDebug extends MotorOpMode {
 		telemetry.addData("gyroX", gyroscope.rawX());
 		telemetry.addData("gyroY", gyroscope.rawY());
 		telemetry.addData("gyroZ", gyroscope.rawZ());
-		telemetry.addData("leftServo", leftServo.getPosition());
-		telemetry.addData("rightServo", rightServo.getPosition());
 		telemetry.addData("upperLeftServo", upperLeftServo.getPosition());
 		telemetry.addData("lowerLeftServo", lowerLeftServo.getPosition());
 		telemetry.addData("arm", motorArm.getCurrentPosition());

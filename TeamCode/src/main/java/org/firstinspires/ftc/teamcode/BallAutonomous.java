@@ -13,10 +13,6 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 	private HardwareMap hardwareMap;
 	private Telemetry telemetry;
 
-	private DcMotor motorFrontLeft;
-	private DcMotor motorFrontRight;
-	private DcMotor motorBackLeft;
-	private DcMotor motorBackRight;
 	private Servo colorServo;
 	private ColorSensor rightColorSensor;
 	private ColorSensor leftColorSensor;
@@ -34,15 +30,9 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 	@Override
 	public void init() {
 
-		motorFrontLeft = hardwareMap.dcMotor.get("motorFrontLeft");
-		motorFrontRight = hardwareMap.dcMotor.get("motorFrontRight");
-		motorBackLeft = hardwareMap.dcMotor.get("motorBackLeft");
-		motorBackRight = hardwareMap.dcMotor.get("motorBackRight");
+		super.init(hardwareMap);
 
-		motorFrontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-		motorFrontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-		motorBackLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-		motorBackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+		enableBreaking(true);
 
 		colorServo = hardwareMap.servo.get("colorServo");
 		rightColorSensor = hardwareMap.colorSensor.get("rightColorSensor");
@@ -55,10 +45,22 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 
 		colorServo.setPosition(0);
 
+		setServosClosed(true);
+
+	}
+
+	public void loop() {
+
 	}
 
 	@Override
 	public void loop(double runtime) {
+
+		if (gyroSensor.isCalibrating()) {
+			time = System.currentTimeMillis() / 1000;
+			telemetry.addLine("Calibrating gyro...");
+			return;
+		}
 
 		telemetry.addData("team", teamColor);
 		telemetry.addData("left", leftColorSensor.red() + " " + leftColorSensor.green() + " " + leftColorSensor.blue() + " " + leftColorSensor.toString());
@@ -83,7 +85,7 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 			colorServo.setPosition(0.6);
 		}
 
-		else if (deltaT <= 1.5 && !locked) {
+		else if (!locked) {
 
 			int i = 0;
 			for (boolean b : tests) {
@@ -92,26 +94,32 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 				}
 			}
 
-			float power = 0.3f;
+			int r = 30;
 			if ((float) i / (float) tests.size() < 0.5) {
-				power *= -1;
+				r *= -1;
 			}
 
-			motorFrontLeft.setPower(power);
-			motorFrontRight.setPower(power);
-			motorBackLeft.setPower(power);
-			motorBackRight.setPower(power);
-
-			locked = true;
+			locked = rotateToPosition(r);
+			startTime = getRuntime();
 
 		}
 
-		else if (deltaT > 1.5) {
+		else if (deltaT < 0.5) {
+
 			colorServo.setPosition(0);
-			motorFrontLeft.setPower(0);
-			motorFrontRight.setPower(0);
-			motorBackLeft.setPower(0);
-			motorBackRight.setPower(0);
+			if (rotateToPosition(90)) {
+				setPower(1);
+			}
+
+		}
+
+		else {
+
+			if (rotateToPosition(0)) {
+				setServosClosed(false);
+				setPower(0.3);
+			}
+
 		}
 
 	}
