@@ -14,7 +14,6 @@ public class MotorDebug extends MotorOpMode {
 	private Servo colorServo;
 	private ColorSensor leftColorSensor;
 	private ColorSensor rightColorSensor;
-	private GyroSensor gyroscope;
 
 	private Gamepad currentGamepad;
 	private Gamepad previousGamepad;
@@ -37,12 +36,12 @@ public class MotorDebug extends MotorOpMode {
 		currentGamepad = new Gamepad(gamepad1);
 		previousPosition = motorArm.getCurrentPosition();
 
-		gyroscope = hardwareMap.gyroSensor.get("gyroscope");
-
 	}
 
 	@Override
 	public void loop() {
+
+		super.init(hardwareMap);
 
 		colorServo.setPosition(0);
 
@@ -67,15 +66,9 @@ public class MotorDebug extends MotorOpMode {
 		}
 
 		if (gamepad1.left_bumper || gamepad2.left_bumper) {
-			upperLeftServo.setPosition(0.65);
-			lowerLeftServo.setPosition(0.25);
-			upperRightServo.setPosition(0.85);
-			lowerRightServo.setPosition(0.05);
+			setServosClosed(true);
 		} else if (gamepad1.right_bumper || gamepad2.right_bumper) {
-			upperLeftServo.setPosition(0.2);
-			lowerLeftServo.setPosition(0.75);
-			upperRightServo.setPosition(0.15);
-			lowerRightServo.setPosition(0.8);
+			setServosClosed(false);
 		}
 
 		//Incrementation of arm position for debugging
@@ -92,10 +85,6 @@ public class MotorDebug extends MotorOpMode {
 			motorArm.setTargetPosition(motorArm.getCurrentPosition() - incrementationSpeed);
 		}
 
-		telemetry.addData("heading", gyroscope.getHeading());
-		telemetry.addData("gyroX", gyroscope.rawX());
-		telemetry.addData("gyroY", gyroscope.rawY());
-		telemetry.addData("gyroZ", gyroscope.rawZ());
 		telemetry.addData("upperLeftServo", upperLeftServo.getPosition());
 		telemetry.addData("lowerLeftServo", lowerLeftServo.getPosition());
 		telemetry.addData("arm", motorArm.getCurrentPosition());

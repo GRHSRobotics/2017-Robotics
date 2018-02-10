@@ -23,6 +23,8 @@ public abstract class MotorOpMode extends OpMode {
 
 	protected GyroSensor gyroSensor;
 
+	protected int target;
+
 	private int spins = 0;
 
 	public void init() {
@@ -70,6 +72,8 @@ public abstract class MotorOpMode extends OpMode {
 	}
 
 	public boolean rotateToPosition(int position) {
+
+		target = position;
 
 		if (gyroSensor.isCalibrating()) {
 			time = System.currentTimeMillis() / 1000;
@@ -153,10 +157,10 @@ public abstract class MotorOpMode extends OpMode {
 
 	public void setPower(double power) {
 
-		motorFrontLeft.setPower(power);
-		motorFrontRight.setPower(-power);
-		motorBackLeft.setPower(power);
-		motorBackRight.setPower(-power);
+		motorFrontLeft.setPower(-power);
+		motorFrontRight.setPower(power);
+		motorBackLeft.setPower(-power);
+		motorBackRight.setPower(power);
 
 	}
 

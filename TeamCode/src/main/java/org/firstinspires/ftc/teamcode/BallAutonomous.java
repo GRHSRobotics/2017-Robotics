@@ -20,6 +20,7 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 	private double startTime = 0;
 	private ArrayList<Boolean> tests = new ArrayList<>();
 	private boolean locked = false;
+	private boolean lock2 = false;
 
 	public BallAutonomous(HardwareMap hardwareMap, Telemetry telemetry, TeamColor teamColor) {
 		this.hardwareMap = hardwareMap;
@@ -62,10 +63,20 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 			return;
 		}
 
+		if (startTime == 0) {
+			startTime = runtime;
+		}
+
+		double deltaT = runtime - startTime;
+
 		telemetry.addData("team", teamColor);
 		telemetry.addData("left", leftColorSensor.red() + " " + leftColorSensor.green() + " " + leftColorSensor.blue() + " " + leftColorSensor.toString());
 		telemetry.addData("right", rightColorSensor.red() + " " + rightColorSensor.green() + " " + rightColorSensor.blue() + " " + rightColorSensor.toString());
+		telemetry.addData("target", target);
+		telemetry.addData("deltaT", deltaT);
 		telemetry.update();
+
+		int r = 30;
 
 		if (colorServo.getPosition() != 0) {
 			if (teamColor == TeamColor.Red) {
@@ -74,12 +85,6 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 				tests.add(leftColorSensor.red() < leftColorSensor.blue());
 			}
 		}
-
-		if (startTime == 0) {
-			startTime = runtime;
-		}
-
-		double deltaT = runtime - startTime;
 
 		if (deltaT <= 1) {
 			colorServo.setPosition(0.6);
@@ -94,32 +99,38 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 				}
 			}
 
-			int r = 30;
 			if ((float) i / (float) tests.size() < 0.5) {
 				r *= -1;
 			}
 
-			locked = rotateToPosition(r);
-			startTime = getRuntime();
+			locked = true;
 
 		}
 
-		else if (deltaT < 0.5) {
+		else if (!lock2) {
+
+			if (rotateToPosition(r)) {
+				lock2 = true;
+			}
+
+			startTime = runtime;
+		}
+
+		else if (true) {
 
 			colorServo.setPosition(0);
 			if (rotateToPosition(90)) {
-				setPower(1);
+				setPower(0.3);
 			}
+
+			telemetry.addData("DeltaT", deltaT);
+			telemetry.update();
 
 		}
 
 		else {
-
-			if (rotateToPosition(0)) {
-				setServosClosed(false);
-				setPower(0.3);
-			}
-
+			setServosClosed(false);
+			setPower(0.3);
 		}
 
 	}
