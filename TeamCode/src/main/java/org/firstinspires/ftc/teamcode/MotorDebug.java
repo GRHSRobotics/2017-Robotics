@@ -24,17 +24,6 @@ public class MotorDebug extends MotorOpMode {
 	@Override
 	public void init() {
 
-
-		motorFrontLeft = hardwareMap.dcMotor.get("motorFrontLeft");
-		motorFrontRight = hardwareMap.dcMotor.get("motorFrontRight");
-		motorBackLeft = hardwareMap.dcMotor.get("motorBackLeft");
-		motorBackRight = hardwareMap.dcMotor.get("motorBackRight");
-
-		motorFrontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-		motorFrontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-		motorBackLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-		motorBackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
-
 		motorArm = hardwareMap.dcMotor.get("motorArm");
 		motorArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
