@@ -79,7 +79,7 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 		telemetry.addData("test", leftColorSensor.blue() + rightColorSensor.red() < leftColorSensor.red() + rightColorSensor.blue());
 		telemetry.update();
 
-		if (colorServo.getPosition() != 0 && !(leftColorSensor.blue() == leftColorSensor.red() && rightColorSensor.blue() == rightColorSensor.red())) {
+		if (colorServo.getPosition() != 0 && !(leftColorSensor.blue() == leftColorSensor.red() && rightColorSensor.blue() == rightColorSensor.red()) && deltaT > 2) {
 
 			if (teamColor == TeamColor.Red) {
 				tests.add(leftColorSensor.blue() + rightColorSensor.red() < leftColorSensor.red() + rightColorSensor.blue());
@@ -89,7 +89,7 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 
 		}
 
-		if (deltaT <= 1 && !locked) {
+		if (deltaT <= 3 && !locked) {
 			colorServo.setPosition(0.6);
 		}
 
