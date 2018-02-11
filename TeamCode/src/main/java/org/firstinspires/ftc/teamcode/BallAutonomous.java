@@ -9,6 +9,8 @@ import java.util.ArrayList;
 
 public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 
+	private int r = 30;
+
 	private TeamColor teamColor;
 	private HardwareMap hardwareMap;
 	private Telemetry telemetry;
@@ -18,6 +20,7 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 	private ColorSensor leftColorSensor;
 
 	private double startTime = 0;
+	private double deltaT = 0;
 	private ArrayList<Boolean> tests = new ArrayList<>();
 	private boolean locked = false;
 	private boolean lock2 = false;
@@ -67,7 +70,7 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 			startTime = runtime;
 		}
 
-		double deltaT = runtime - startTime;
+		deltaT = runtime - startTime;
 
 		telemetry.addData("team", teamColor);
 		telemetry.addData("left", leftColorSensor.red() + " " + leftColorSensor.green() + " " + leftColorSensor.blue() + " " + leftColorSensor.toString());
@@ -75,8 +78,6 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 		telemetry.addData("target", target);
 		telemetry.addData("deltaT", deltaT);
 		telemetry.update();
-
-		int r = 30;
 
 		if (colorServo.getPosition() != 0) {
 			if (teamColor == TeamColor.Red) {
@@ -86,7 +87,7 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 			}
 		}
 
-		if (deltaT <= 1) {
+		if (deltaT <= 1 && !locked) {
 			colorServo.setPosition(0.6);
 		}
 
@@ -110,27 +111,26 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 		else if (!lock2) {
 
 			if (rotateToPosition(r)) {
+				colorServo.setPosition(0);
 				lock2 = true;
 			}
 
 			startTime = runtime;
 		}
 
-		else if (true) {
+		else if (deltaT < 3) {
 
-			colorServo.setPosition(0);
 			if (rotateToPosition(90)) {
 				setPower(0.3);
 			}
 
-			telemetry.addData("DeltaT", deltaT);
-			telemetry.update();
-
 		}
 
 		else {
-			setServosClosed(false);
-			setPower(0.3);
+			if (rotateToPosition(180)) {
+				setServosClosed(false);
+				setPower(0.3);
+			}
 		}
 
 	}
