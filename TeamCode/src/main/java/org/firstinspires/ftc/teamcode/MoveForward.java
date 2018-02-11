@@ -1,56 +1,49 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
 
 @Autonomous(name = "moveForward", group = "default")
-public class MoveForward extends OpMode {
+public class MoveForward extends MotorOpMode {
 
-	private DcMotor motorFrontLeft;
-	private DcMotor motorFrontRight;
-	private DcMotor motorBackLeft;
-	private DcMotor motorBackRight;
-	private double starttime = 0;
+	private double startTime = 0;
 
 	@Override
 	public void init() {
 
-		motorFrontLeft = hardwareMap.dcMotor.get("motorFrontLeft");
-		motorFrontRight = hardwareMap.dcMotor.get("motorFrontRight");
-		motorBackLeft = hardwareMap.dcMotor.get("motorBackLeft");
-		motorBackRight = hardwareMap.dcMotor.get("motorBackRight");
+		super.init();
+
+		setServosClosed(true);
 
 	}
 
 	@Override
 	public void loop() {
 
-		if (starttime == 0) {
-			starttime = getRuntime();
+		if (startTime == 0) {
+			startTime = getRuntime();
 		}
 
-		if (getRuntime() - starttime >= 1) {
+		if (getRuntime() - startTime >= 1) {
+			setServosClosed(false);
+			setPower(-0.3);
+			return;
+		}
+
+		if (getRuntime() - startTime >= 1.5) {
 			stop();
 			return;
 		}
 
 		telemetry.addData("time", getRuntime());
-		telemetry.addData("delta T", getRuntime() - starttime);
+		telemetry.addData("delta T", getRuntime() - startTime);
 
-		motorFrontLeft.setPower(1);
-		motorFrontRight.setPower(-1);
-		motorBackLeft.setPower(1);
-		motorBackRight.setPower(-1);
+		setPower(1);
 
 	}
 
 	@Override
 	public void stop() {
-		motorBackLeft.setPower(0);
-		motorBackRight.setPower(0);
-		motorFrontLeft.setPower(0);
-		motorFrontRight.setPower(0);
+		setPower(0);
 		super.stop();
 	}
 
