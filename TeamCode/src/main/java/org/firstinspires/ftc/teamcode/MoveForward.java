@@ -23,21 +23,23 @@ public class MoveForward extends MotorOpMode {
 			startTime = getRuntime();
 		}
 
-		if (getRuntime() - startTime >= 1) {
+		if (getRuntime() - startTime < 1) {
+			setPower(1);
+		}
+
+		else if (getRuntime() - startTime < 1.5) {
 			setServosClosed(false);
 			setPower(-0.3);
 			return;
 		}
 
-		if (getRuntime() - startTime >= 1.5) {
+		else {
 			stop();
 			return;
 		}
 
 		telemetry.addData("time", getRuntime());
 		telemetry.addData("delta T", getRuntime() - startTime);
-
-		setPower(1);
 
 	}
 
