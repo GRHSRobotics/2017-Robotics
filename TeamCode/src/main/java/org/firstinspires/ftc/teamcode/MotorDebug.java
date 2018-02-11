@@ -33,6 +33,14 @@ public class MotorDebug extends MotorOpMode {
 		lowerRightServo = hardwareMap.servo.get("lowerRightServo");
 		colorServo = hardwareMap.servo.get("colorServo");
 
+		rightColorSensor = hardwareMap.colorSensor.get("rightColorSensor");
+		leftColorSensor = hardwareMap.colorSensor.get("leftColorSensor");
+		rightColorSensor.setI2cAddress(I2cAddr.create8bit(0x3c));
+		leftColorSensor.setI2cAddress(I2cAddr.create8bit(0x3e));
+
+		rightColorSensor.enableLed(true);
+		leftColorSensor.enableLed(true);
+
 		currentGamepad = new Gamepad(gamepad1);
 		previousPosition = motorArm.getCurrentPosition();
 
@@ -87,6 +95,8 @@ public class MotorDebug extends MotorOpMode {
 
 		telemetry.addData("upperLeftServo", upperLeftServo.getPosition());
 		telemetry.addData("lowerLeftServo", lowerLeftServo.getPosition());
+		telemetry.addData("left", leftColorSensor.red() + " " + leftColorSensor.green() + " " + leftColorSensor.blue() + " " + leftColorSensor.toString());
+		telemetry.addData("right", rightColorSensor.red() + " " + rightColorSensor.green() + " " + rightColorSensor.blue() + " " + rightColorSensor.toString());
 		telemetry.addData("arm", motorArm.getCurrentPosition());
 		telemetry.addData("armTarget", motorArm.getTargetPosition());
 		telemetry.addData("armPower", motorArm.getPower());
