@@ -126,11 +126,17 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 
 		}
 
-		else {
+		else if (deltaT < 6) {
+
 			if (rotateToPosition(180)) {
 				setServosClosed(false);
 				setPower(0.3);
 			}
+
+		}
+
+		else {
+			setPower(0);
 		}
 
 	}
