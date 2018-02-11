@@ -19,4 +19,9 @@ public class RedBall extends OpMode {
 		ballAutonomous.loop(getRuntime());
 	}
 
+	@Override
+	public void stop() {
+		ballAutonomous.stop();
+	}
+
 }
