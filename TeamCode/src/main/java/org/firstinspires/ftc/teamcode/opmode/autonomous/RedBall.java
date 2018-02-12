@@ -1,7 +1,8 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.opmode.autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import org.firstinspires.ftc.teamcode.TeamColor;
 
 @Autonomous(name = "RedBall", group = "default")
 public class RedBall extends OpMode {
@@ -17,6 +18,11 @@ public class RedBall extends OpMode {
 	@Override
 	public void loop() {
 		ballAutonomous.loop(getRuntime());
+	}
+
+	@Override
+	public void stop() {
+		ballAutonomous.stop();
 	}
 
 }
