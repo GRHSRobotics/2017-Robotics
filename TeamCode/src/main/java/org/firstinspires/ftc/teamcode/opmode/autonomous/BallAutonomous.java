@@ -1,9 +1,10 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.opmode.autonomous;
 
-import android.graphics.Color;
 import com.qualcomm.robotcore.hardware.*;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.robotcore.internal.android.dx.util.HexParser;
+import org.firstinspires.ftc.teamcode.TeamColor;
+import org.firstinspires.ftc.teamcode.opmode.MotorOpMode;
+import org.firstinspires.ftc.teamcode.opmode.VirtualOpMode;
 
 import java.util.ArrayList;
 

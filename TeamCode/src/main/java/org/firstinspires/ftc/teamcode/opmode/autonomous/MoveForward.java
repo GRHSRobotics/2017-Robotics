@@ -1,6 +1,7 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.opmode.autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import org.firstinspires.ftc.teamcode.opmode.MotorOpMode;
 
 @Autonomous(name = "moveForward", group = "default")
 public class MoveForward extends MotorOpMode {

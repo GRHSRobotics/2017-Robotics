@@ -1,7 +1,8 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.opmode.autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import org.firstinspires.ftc.teamcode.TeamColor;
 
 @Autonomous(name = "BlueBall", group = "default")
 public class BlueBall extends OpMode {

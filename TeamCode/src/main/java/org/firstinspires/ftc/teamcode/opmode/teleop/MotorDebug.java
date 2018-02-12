@@ -1,7 +1,8 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.opmode.teleop;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.*;
+import org.firstinspires.ftc.teamcode.opmode.MotorOpMode;
 
 @TeleOp(name = "motorDebug", group = "debug")
 public class MotorDebug extends MotorOpMode {
@@ -15,8 +16,8 @@ public class MotorDebug extends MotorOpMode {
 	private ColorSensor leftColorSensor;
 	private ColorSensor rightColorSensor;
 
-	private Gamepad currentGamepad;
-	private Gamepad previousGamepad;
+	private org.firstinspires.ftc.teamcode.Gamepad currentGamepad;
+	private org.firstinspires.ftc.teamcode.Gamepad previousGamepad;
 
 	private int previousPosition;
 
@@ -41,7 +42,7 @@ public class MotorDebug extends MotorOpMode {
 		rightColorSensor.enableLed(true);
 		leftColorSensor.enableLed(true);
 
-		currentGamepad = new Gamepad(gamepad1);
+		currentGamepad = new org.firstinspires.ftc.teamcode.Gamepad(gamepad1);
 		previousPosition = motorArm.getCurrentPosition();
 
 	}
@@ -105,7 +106,7 @@ public class MotorDebug extends MotorOpMode {
 
 		telemetry.update();
 
-		previousGamepad = new Gamepad(gamepad1);
+		previousGamepad = new org.firstinspires.ftc.teamcode.Gamepad(gamepad1);
 		
 	}
 

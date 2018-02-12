@@ -1,8 +1,9 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.opmode.testing;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.GyroSensor;
+import org.firstinspires.ftc.teamcode.opmode.MotorOpMode;
 
 @Autonomous(name = "GyroTest", group = "default")
 public class GyroTest extends MotorOpMode {
