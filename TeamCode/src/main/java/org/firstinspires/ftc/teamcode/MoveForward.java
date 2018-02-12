@@ -29,8 +29,16 @@ public class MoveForward extends MotorOpMode {
 
 		else if (getRuntime() - startTime < 1.5) {
 			setServosClosed(false);
-			setPower(-0.3);
+			setPower(0);
 			return;
+		}
+
+		else if (getRuntime() - startTime < 4) {
+			setPower(0.3);
+		}
+
+		else if (getRuntime() - startTime < 4.75) {
+			setPower(-0.3);
 		}
 
 		else {
