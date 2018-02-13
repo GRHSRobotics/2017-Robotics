@@ -9,6 +9,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 public class TelemetryTest extends OpMode {
 
 	private ToneGenerator toneGenerator;
+	private int time;
 
 	@Override
 	public void init() {
@@ -23,8 +24,11 @@ public class TelemetryTest extends OpMode {
 	@Override
 	public void loop() {
 
-		if (getRuntime() % 10 == 0) {
+		int time = (int) getRuntime();
+
+		if (time % 10 == 0 && time > this.time) {
 			toneGenerator.startTone(ToneGenerator.TONE_CDMA_PIP,150);
+			this.time = time;
 		}
 
 		telemetry.addData("time", getRuntime());
