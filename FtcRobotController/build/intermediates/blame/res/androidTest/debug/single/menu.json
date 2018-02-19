@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\menu\\ftc_robot_controller.xml",
+        "source": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\FtcRobotController\\build\\intermediates\\bundles\\debug\\res\\menu\\ftc_robot_controller.xml"
+    },
+    {
         "merged": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\menu\\ftc_robot_controller.xml",
         "source": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\bundles\\debug\\res\\menu\\ftc_robot_controller.xml"
     },
@@ -10,5 +14,13 @@
     {
         "merged": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\menu\\menu_server.xml",
         "source": "C:\\Users\\robot\\.android\\build-cache\\aef14934283a5fbc6f5e31ae5ad758e86cd03b20\\output\\res\\menu\\menu_server.xml"
+    },
+    {
+        "merged": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\menu\\main_menu.xml",
+        "source": "C:\\Users\\Mark\\.android\\build-cache\\8eddc945600d4337c08351935b1327e47aa5d378\\output\\res\\menu\\main_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\menu\\menu_server.xml",
+        "source": "C:\\Users\\Mark\\.android\\build-cache\\50d07d71965d96dfbaf401e1aa5f3c64418a62b5\\output\\res\\menu\\menu_server.xml"
     }
 ]

@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\TeamCode\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_launcher.png",
+        "source": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\FtcRobotController\\build\\intermediates\\bundles\\default\\res\\drawable-xxhdpi-v4\\ic_launcher.png"
+    },
+    {
         "merged": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\TeamCode\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_launcher.png",
         "source": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\bundles\\default\\res\\drawable-xxhdpi-v4\\ic_launcher.png"
     }

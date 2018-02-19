@@ -1,7 +1,19 @@
 [
     {
+        "merged": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\ic_launcher.png",
+        "source": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\FtcRobotController\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\ic_launcher.png"
+    },
+    {
         "merged": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\icon_robotcontroller.png",
         "source": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\icon_robotcontroller.png"
+    },
+    {
+        "merged": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\icon_robotcontroller.png",
+        "source": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\FtcRobotController\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\icon_robotcontroller.png"
+    },
+    {
+        "merged": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\icon_menu.png",
+        "source": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\FtcRobotController\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\icon_menu.png"
     },
     {
         "merged": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\icon_menu.png",
