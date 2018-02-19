@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\res\\merged\\release\\drawable\\black_border.xml",
+        "source": "C:\\Users\\robot\\.android\\build-cache\\aef14934283a5fbc6f5e31ae5ad758e86cd03b20\\output\\res\\drawable\\black_border.xml"
+    },
+    {
+        "merged": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\res\\merged\\release\\drawable\\button_shape.xml",
+        "source": "C:\\Users\\robot\\.android\\build-cache\\40dd045163758dfb098097d57c6e5e181b7768c8\\output\\res\\drawable\\button_shape.xml"
+    },
+    {
+        "merged": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\res\\merged\\release\\drawable\\feedback_shape_orange.xml",
+        "source": "C:\\Users\\robot\\.android\\build-cache\\7e9b8fc6ef26b0156ae44632351d2314b0900a99\\output\\res\\drawable\\feedback_shape_orange.xml"
+    },
+    {
+        "merged": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\res\\merged\\release\\drawable\\icon_robotcontroller.png",
+        "source": "C:\\Users\\robot\\.android\\build-cache\\196710e56f2b96520b9e431487fbd3637879cbdc\\output\\res\\drawable\\icon_robotcontroller.png"
+    },
+    {
+        "merged": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\res\\merged\\release\\drawable\\icon_menu.png",
+        "source": "C:\\Users\\robot\\.android\\build-cache\\196710e56f2b96520b9e431487fbd3637879cbdc\\output\\res\\drawable\\icon_menu.png"
+    }
+]

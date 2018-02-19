@@ -43,7 +43,7 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 		rightColorSensor = hardwareMap.colorSensor.get("rightColorSensor");
 		leftColorSensor = hardwareMap.colorSensor.get("leftColorSensor");
 		rightColorSensor.setI2cAddress(I2cAddr.create8bit(0x3c));
-		leftColorSensor.setI2cAddress(I2cAddr.create8bit(0x3e));
+		leftColorSensor.setI2cAddress(I2cAddr.create8bit(0x3c));
 
 		rightColorSensor.enableLed(true);
 		leftColorSensor.enableLed(true);
@@ -144,7 +144,7 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 
 		}
 
-		else if (deltaT < 7){
+		else if (deltaT < 6.25){
 			setPower(-0.3);
 		}
 

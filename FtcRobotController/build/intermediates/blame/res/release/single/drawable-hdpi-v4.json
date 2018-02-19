@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\res\\merged\\release\\drawable-hdpi-v4\\button_shape.xml",
+        "source": "C:\\Users\\robot\\.android\\build-cache\\40dd045163758dfb098097d57c6e5e181b7768c8\\output\\res\\drawable-hdpi-v4\\button_shape.xml"
+    },
+    {
+        "merged": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\res\\merged\\release\\drawable-hdpi-v4\\ic_launcher.png",
+        "source": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
+    }
+]
