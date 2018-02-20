@@ -92,12 +92,12 @@
         "source": "C:\\Users\\robot\\.android\\build-cache\\40dd045163758dfb098097d57c6e5e181b7768c8\\output\\res\\layout\\activity_config_wifi_direct.xml"
     },
     {
-        "merged": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout\\lynx_module_configure_address.xml",
-        "source": "C:\\Users\\Mark\\.android\\build-cache\\c233878940b292cbbc6187ece08a65ca850c8e26\\output\\res\\layout\\lynx_module_configure_address.xml"
-    },
-    {
         "merged": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout\\activity_blocks.xml",
         "source": "C:\\Users\\robot\\.android\\build-cache\\aef14934283a5fbc6f5e31ae5ad758e86cd03b20\\output\\res\\layout\\activity_blocks.xml"
+    },
+    {
+        "merged": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout\\lynx_module_configure_address.xml",
+        "source": "C:\\Users\\Mark\\.android\\build-cache\\c233878940b292cbbc6187ece08a65ca850c8e26\\output\\res\\layout\\lynx_module_configure_address.xml"
     },
     {
         "merged": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout\\template_info.xml",
@@ -202,6 +202,10 @@
     {
         "merged": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout\\analog_outputs.xml",
         "source": "C:\\Users\\Mark\\.android\\build-cache\\c233878940b292cbbc6187ece08a65ca850c8e26\\output\\res\\layout\\analog_outputs.xml"
+    },
+    {
+        "merged": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout\\activity_camera_view.xml",
+        "source": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\FtcRobotController\\build\\intermediates\\bundles\\default\\res\\layout\\activity_camera_view.xml"
     },
     {
         "merged": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\TeamCode\\build\\intermediates\\res\\merged\\debug\\layout\\activity_config_wifi_direct.xml",

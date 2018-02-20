@@ -15,7 +15,7 @@ ADDED from C:\Users\Mark\IdeaProjects\2017-Robotics\TeamCode\src\main\AndroidMan
 		INJECTED from C:\Users\Mark\IdeaProjects\2017-Robotics\TeamCode\src\main\AndroidManifest.xml
 application
 ADDED from C:\Users\Mark\IdeaProjects\2017-Robotics\TeamCode\src\main\AndroidManifest.xml:11:5-19
-MERGED from [2017-Robotics:FtcRobotController:unspecified] C:\Users\Mark\IdeaProjects\2017-Robotics\FtcRobotController\build\intermediates\bundles\default\AndroidManifest.xml:14:5-45:19
+MERGED from [2017-Robotics:FtcRobotController:unspecified] C:\Users\Mark\IdeaProjects\2017-Robotics\FtcRobotController\build\intermediates\bundles\default\AndroidManifest.xml:14:5-52:19
 MERGED from [:Inspection-release:] C:\Users\Mark\.android\build-cache\8eddc945600d4337c08351935b1327e47aa5d378\output\AndroidManifest.xml:19:5-30:19
 MERGED from [:Blocks-release:] C:\Users\Mark\.android\build-cache\50d07d71965d96dfbaf401e1aa5f3c64418a62b5\output\AndroidManifest.xml:18:5-39:19
 MERGED from [:RobotCore-release:] C:\Users\Mark\.android\build-cache\19adbf87cd594cd92c93c068972a0c081d7eed0a\output\AndroidManifest.xml:67:5-86:19
@@ -87,12 +87,24 @@ ADDED from [2017-Robotics:FtcRobotController:unspecified] C:\Users\Mark\IdeaProj
 		ADDED from [2017-Robotics:FtcRobotController:unspecified] C:\Users\Mark\IdeaProjects\2017-Robotics\FtcRobotController\build\intermediates\bundles\default\AndroidManifest.xml:38:17-54
 	android:name
 		ADDED from [2017-Robotics:FtcRobotController:unspecified] C:\Users\Mark\IdeaProjects\2017-Robotics\FtcRobotController\build\intermediates\bundles\default\AndroidManifest.xml:37:17-79
-service#com.qualcomm.ftccommon.FtcRobotControllerService
-ADDED from [2017-Robotics:FtcRobotController:unspecified] C:\Users\Mark\IdeaProjects\2017-Robotics\FtcRobotController\build\intermediates\bundles\default\AndroidManifest.xml:42:9-44:38
-	android:enabled
-		ADDED from [2017-Robotics:FtcRobotController:unspecified] C:\Users\Mark\IdeaProjects\2017-Robotics\FtcRobotController\build\intermediates\bundles\default\AndroidManifest.xml:44:13-35
+activity#org.firstinspires.ftc.robotcontroller.internal.CameraActivity
+ADDED from [2017-Robotics:FtcRobotController:unspecified] C:\Users\Mark\IdeaProjects\2017-Robotics\FtcRobotController\build\intermediates\bundles\default\AndroidManifest.xml:40:9-46:20
+	android:label
+		ADDED from [2017-Robotics:FtcRobotController:unspecified] C:\Users\Mark\IdeaProjects\2017-Robotics\FtcRobotController\build\intermediates\bundles\default\AndroidManifest.xml:42:13-45
 	android:name
-		ADDED from [2017-Robotics:FtcRobotController:unspecified] C:\Users\Mark\IdeaProjects\2017-Robotics\FtcRobotController\build\intermediates\bundles\default\AndroidManifest.xml:43:13-76
+		ADDED from [2017-Robotics:FtcRobotController:unspecified] C:\Users\Mark\IdeaProjects\2017-Robotics\FtcRobotController\build\intermediates\bundles\default\AndroidManifest.xml:41:13-89
+intent-filter#android.intent.category.DEFAULT
+ADDED from [2017-Robotics:FtcRobotController:unspecified] C:\Users\Mark\IdeaProjects\2017-Robotics\FtcRobotController\build\intermediates\bundles\default\AndroidManifest.xml:43:13-45:29
+category#android.intent.category.DEFAULT
+ADDED from [2017-Robotics:FtcRobotController:unspecified] C:\Users\Mark\IdeaProjects\2017-Robotics\FtcRobotController\build\intermediates\bundles\default\AndroidManifest.xml:44:17-76
+	android:name
+		ADDED from [2017-Robotics:FtcRobotController:unspecified] C:\Users\Mark\IdeaProjects\2017-Robotics\FtcRobotController\build\intermediates\bundles\default\AndroidManifest.xml:44:27-73
+service#com.qualcomm.ftccommon.FtcRobotControllerService
+ADDED from [2017-Robotics:FtcRobotController:unspecified] C:\Users\Mark\IdeaProjects\2017-Robotics\FtcRobotController\build\intermediates\bundles\default\AndroidManifest.xml:49:9-51:38
+	android:enabled
+		ADDED from [2017-Robotics:FtcRobotController:unspecified] C:\Users\Mark\IdeaProjects\2017-Robotics\FtcRobotController\build\intermediates\bundles\default\AndroidManifest.xml:51:13-35
+	android:name
+		ADDED from [2017-Robotics:FtcRobotController:unspecified] C:\Users\Mark\IdeaProjects\2017-Robotics\FtcRobotController\build\intermediates\bundles\default\AndroidManifest.xml:50:13-76
 uses-permission#android.permission.ACCESS_WIFI_STATE
 ADDED from [:Inspection-release:] C:\Users\Mark\.android\build-cache\8eddc945600d4337c08351935b1327e47aa5d378\output\AndroidManifest.xml:11:5-76
 MERGED from [:RobotCore-release:] C:\Users\Mark\.android\build-cache\19adbf87cd594cd92c93c068972a0c081d7eed0a\output\AndroidManifest.xml:11:5-13:35
@@ -570,10 +582,6 @@ ADDED from [:FtcCommon-release:] C:\Users\Mark\.android\build-cache\c233878940b2
 		ADDED from [:FtcCommon-release:] C:\Users\Mark\.android\build-cache\c233878940b292cbbc6187ece08a65ca850c8e26\output\AndroidManifest.xml:206:13-78
 intent-filter#android.intent.action.BOOT_COMPLETED+android.intent.action.QUICKBOOT_POWERON+android.intent.category.DEFAULT
 ADDED from [:FtcCommon-release:] C:\Users\Mark\.android\build-cache\c233878940b292cbbc6187ece08a65ca850c8e26\output\AndroidManifest.xml:210:13-215:29
-category#android.intent.category.DEFAULT
-ADDED from [:FtcCommon-release:] C:\Users\Mark\.android\build-cache\c233878940b292cbbc6187ece08a65ca850c8e26\output\AndroidManifest.xml:211:17-76
-	android:name
-		ADDED from [:FtcCommon-release:] C:\Users\Mark\.android\build-cache\c233878940b292cbbc6187ece08a65ca850c8e26\output\AndroidManifest.xml:211:27-73
 action#android.intent.action.BOOT_COMPLETED
 ADDED from [:FtcCommon-release:] C:\Users\Mark\.android\build-cache\c233878940b292cbbc6187ece08a65ca850c8e26\output\AndroidManifest.xml:213:17-79
 	android:name

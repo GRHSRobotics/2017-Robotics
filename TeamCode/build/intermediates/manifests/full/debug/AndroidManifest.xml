@@ -95,6 +95,13 @@
             <meta-data
                 android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
                 android:resource="@xml/device_filter" />
+        </activity>
+        <activity
+            android:name="org.firstinspires.ftc.robotcontroller.internal.CameraActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity> <!-- The robot controller service in which most of the robot functionality is managed -->
         <service
             android:name="com.qualcomm.ftccommon.FtcRobotControllerService"

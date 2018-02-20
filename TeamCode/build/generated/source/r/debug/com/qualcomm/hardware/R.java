@@ -125,18 +125,18 @@ public final class R {
         public static final int feedback_shape_orange = 0x7f020002;
     }
     public static final class id {
-        public static final int colorSwatch = 0x7f0c006a;
-        public static final int feedback = 0x7f0c0070;
-        public static final int feedbackOKButton = 0x7f0c0073;
-        public static final int feedbackText0 = 0x7f0c0071;
-        public static final int feedbackText1 = 0x7f0c0072;
-        public static final int loadingIndicator = 0x7f0c009d;
-        public static final int loadingIndicatorOverlay = 0x7f0c009c;
+        public static final int colorSwatch = 0x7f0c006b;
+        public static final int feedback = 0x7f0c0071;
+        public static final int feedbackOKButton = 0x7f0c0074;
+        public static final int feedbackText0 = 0x7f0c0072;
+        public static final int feedbackText1 = 0x7f0c0073;
+        public static final int loadingIndicator = 0x7f0c009e;
+        public static final int loadingIndicatorOverlay = 0x7f0c009d;
     }
     public static final class layout {
-        public static final int color_list_preference_line_item = 0x7f030017;
-        public static final int feedback = 0x7f03001c;
-        public static final int loading_indicator_overlay = 0x7f030025;
+        public static final int color_list_preference_line_item = 0x7f030018;
+        public static final int feedback = 0x7f03001d;
+        public static final int loading_indicator_overlay = 0x7f030026;
     }
     public static final class raw {
         public static final int color_fragment_shader = 0x7f050002;

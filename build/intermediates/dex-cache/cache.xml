@@ -12,51 +12,6 @@
     </item>
     <item
         is-multidex="false"
-        jar="C:\Users\Mark\.android\build-cache\8eddc945600d4337c08351935b1327e47aa5d378\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.3"
-        sha1="0afd6a8e22ccd6505d194cc3872cdc9804785f0f">
-        <dex dex="C:\Users\Mark\IdeaProjects\2017-Robotics\TeamCode\build\intermediates\pre-dexed\debug\classes_7d9c3e2bc8cb49cb86272f614d2b8adfa933d7df.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Mark\.android\build-cache\b775847e624637e4df5c4ef3313fd2f1c336f328\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.3"
-        sha1="9dafed45e330aec14abcce05bdb7bbdb2a2d7092">
-        <dex dex="C:\Users\Mark\IdeaProjects\2017-Robotics\TeamCode\build\intermediates\pre-dexed\debug\classes_39449541e0ea9a33adbf1015575bfc2cd453f63b.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Mark\.android\build-cache\50d07d71965d96dfbaf401e1aa5f3c64418a62b5\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.3"
-        sha1="7cd44f3e9b0804d848acff8c77b242d8530c6b17">
-        <dex dex="C:\Users\Mark\IdeaProjects\2017-Robotics\TeamCode\build\intermediates\pre-dexed\debug\classes_3b4359e9b0cbd35c1136f37d4daa54898db5ef5e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Mark\.android\build-cache\19adbf87cd594cd92c93c068972a0c081d7eed0a\output\jars\libs\gson-extras-0.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.3"
-        sha1="b30c2655badcc7ce97f84e49f777b7dd154bad57">
-        <dex dex="C:\Users\Mark\IdeaProjects\2017-Robotics\TeamCode\build\intermediates\pre-dexed\debug\gson-extras-0.2.1_47b7d664b63977e3c18e0ae65557d51d7ef94337.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Mark\.android\build-cache\9d211f8c59061a5b3f34f93b014bb3c632a3272a\output\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.3"
-        sha1="9403be210676ed196cdcc64c7391b9ae2361c174">
-        <dex dex="C:\Users\Mark\IdeaProjects\2017-Robotics\TeamCode\build\intermediates\pre-dexed\debug\classes_dbc04a6035ccc217defbf6849cde49113d2a6cdb.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="C:\Users\Mark\.android\build-cache\19adbf87cd594cd92c93c068972a0c081d7eed0a\output\jars\libs\support-annotations-23.4.0.jar"
         jumboMode="false"
         optimize="true"
@@ -70,7 +25,7 @@
         jumboMode="false"
         optimize="true"
         revision="25.0.3"
-        sha1="36f5ef793d879dc86f4e4a3f969dc2d40ca658f5">
+        sha1="cde8a756ecec51bd5d01b62a053cac492b8c025a">
         <dex dex="C:\Users\Mark\IdeaProjects\2017-Robotics\TeamCode\build\intermediates\pre-dexed\debug\classes_19507563bfe186a61c48e856674d53151fae5172.jar" />
     </item>
     <item
@@ -93,6 +48,24 @@
     </item>
     <item
         is-multidex="false"
+        jar="C:\Users\Mark\.android\build-cache\8eddc945600d4337c08351935b1327e47aa5d378\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="0afd6a8e22ccd6505d194cc3872cdc9804785f0f">
+        <dex dex="C:\Users\Mark\IdeaProjects\2017-Robotics\TeamCode\build\intermediates\pre-dexed\debug\classes_7d9c3e2bc8cb49cb86272f614d2b8adfa933d7df.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Mark\.android\build-cache\b775847e624637e4df5c4ef3313fd2f1c336f328\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="9dafed45e330aec14abcce05bdb7bbdb2a2d7092">
+        <dex dex="C:\Users\Mark\IdeaProjects\2017-Robotics\TeamCode\build\intermediates\pre-dexed\debug\classes_39449541e0ea9a33adbf1015575bfc2cd453f63b.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="C:\Users\Mark\.android\build-cache\19adbf87cd594cd92c93c068972a0c081d7eed0a\output\jars\libs\gson-2.8.0.jar"
         jumboMode="false"
         optimize="true"
@@ -111,12 +84,39 @@
     </item>
     <item
         is-multidex="false"
+        jar="C:\Users\Mark\.android\build-cache\50d07d71965d96dfbaf401e1aa5f3c64418a62b5\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="7cd44f3e9b0804d848acff8c77b242d8530c6b17">
+        <dex dex="C:\Users\Mark\IdeaProjects\2017-Robotics\TeamCode\build\intermediates\pre-dexed\debug\classes_3b4359e9b0cbd35c1136f37d4daa54898db5ef5e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Mark\.android\build-cache\19adbf87cd594cd92c93c068972a0c081d7eed0a\output\jars\libs\gson-extras-0.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="b30c2655badcc7ce97f84e49f777b7dd154bad57">
+        <dex dex="C:\Users\Mark\IdeaProjects\2017-Robotics\TeamCode\build\intermediates\pre-dexed\debug\gson-extras-0.2.1_47b7d664b63977e3c18e0ae65557d51d7ef94337.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="C:\Users\Mark\.android\build-cache\19adbf87cd594cd92c93c068972a0c081d7eed0a\output\jars\libs\Vuforia.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.3"
         sha1="91b46366eb9f8203073ee2935087c097c888c0ed">
         <dex dex="C:\Users\Mark\IdeaProjects\2017-Robotics\TeamCode\build\intermediates\pre-dexed\debug\Vuforia_af26199652aa1281625bb9436e228b4b44018d48.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Mark\.android\build-cache\9d211f8c59061a5b3f34f93b014bb3c632a3272a\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="9403be210676ed196cdcc64c7391b9ae2361c174">
+        <dex dex="C:\Users\Mark\IdeaProjects\2017-Robotics\TeamCode\build\intermediates\pre-dexed\debug\classes_dbc04a6035ccc217defbf6849cde49113d2a6cdb.jar" />
     </item>
 
 </items>
