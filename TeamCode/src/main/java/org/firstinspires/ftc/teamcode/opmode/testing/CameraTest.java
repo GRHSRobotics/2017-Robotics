@@ -14,6 +14,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import org.firstinspires.ftc.robotcontroller.internal.CameraActivity;
 import org.firstinspires.ftc.robotcontroller.internal.CameraView;
+import org.firstinspires.ftc.robotcontroller.internal.PixelManager;
 
 /**
  * Created by AllTheMegahertz on 2/19/2018.
@@ -23,13 +24,14 @@ import org.firstinspires.ftc.robotcontroller.internal.CameraView;
 public class CameraTest extends OpMode {
 
 	private Camera mCamera = null;
+	private Intent intent;
 
 	@Override
 	public void init() {
 
 		Looper.prepare();
 
-		Intent intent = new Intent(hardwareMap.appContext, CameraActivity.class);
+		intent = new Intent(hardwareMap.appContext, CameraActivity.class);
 		hardwareMap.appContext.startActivity(intent);
 
 	}
@@ -37,6 +39,19 @@ public class CameraTest extends OpMode {
 	@Override
 	public void loop() {
 
+		telemetry.addData("count", PixelManager.getAmount());
+		telemetry.update();
+
 	}
 
+	@Override
+	public void stop() {
+
+		super.stop();
+
+		if (intent != null) {
+			hardwareMap.appContext.stopService(intent);
+		}
+
+	}
 }

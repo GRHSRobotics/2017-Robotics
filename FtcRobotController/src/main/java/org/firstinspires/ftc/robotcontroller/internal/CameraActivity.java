@@ -25,6 +25,7 @@ public class CameraActivity extends Activity {
 
 	private Camera mCamera = null;
 	private CameraView mCameraView = null;
+	private Overlay overlay = null;
 
 	private ToneGenerator toneGenerator;
 
@@ -53,7 +54,7 @@ public class CameraActivity extends Activity {
 
 		mCameraView.setDrawingCacheEnabled(true);
 
-		Overlay overlay = new Overlay(this);
+		overlay = new Overlay(this);
 		addContentView(overlay, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
 //		ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
@@ -91,4 +92,7 @@ public class CameraActivity extends Activity {
 
 	}
 
+	public Overlay getOverlay() {
+		return overlay;
+	}
 }

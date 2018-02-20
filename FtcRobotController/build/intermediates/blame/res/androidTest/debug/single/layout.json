@@ -36,40 +36,40 @@
         "source": "C:\\Users\\robot\\.android\\build-cache\\40dd045163758dfb098097d57c6e5e181b7768c8\\output\\res\\layout\\matrices.xml"
     },
     {
-        "merged": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_ftc_controller.xml",
-        "source": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_ftc_controller.xml"
-    },
-    {
         "merged": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\lynx_module.xml",
         "source": "C:\\Users\\robot\\.android\\build-cache\\40dd045163758dfb098097d57c6e5e181b7768c8\\output\\res\\layout\\lynx_module.xml"
+    },
+    {
+        "merged": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_ftc_controller.xml",
+        "source": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_ftc_controller.xml"
     },
     {
         "merged": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\i2cs.xml",
         "source": "C:\\Users\\robot\\.android\\build-cache\\40dd045163758dfb098097d57c6e5e181b7768c8\\output\\res\\layout\\i2cs.xml"
     },
     {
-        "merged": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_generic_settings.xml",
-        "source": "C:\\Users\\robot\\.android\\build-cache\\40dd045163758dfb098097d57c6e5e181b7768c8\\output\\res\\layout\\activity_generic_settings.xml"
+        "merged": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\lynx_usb_device.xml",
+        "source": "C:\\Users\\Mark\\.android\\build-cache\\c233878940b292cbbc6187ece08a65ca850c8e26\\output\\res\\layout\\lynx_usb_device.xml"
     },
     {
         "merged": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\motor_list.xml",
         "source": "C:\\Users\\Mark\\.android\\build-cache\\c233878940b292cbbc6187ece08a65ca850c8e26\\output\\res\\layout\\motor_list.xml"
     },
     {
-        "merged": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\lynx_usb_device.xml",
-        "source": "C:\\Users\\Mark\\.android\\build-cache\\c233878940b292cbbc6187ece08a65ca850c8e26\\output\\res\\layout\\lynx_usb_device.xml"
+        "merged": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_generic_settings.xml",
+        "source": "C:\\Users\\robot\\.android\\build-cache\\40dd045163758dfb098097d57c6e5e181b7768c8\\output\\res\\layout\\activity_generic_settings.xml"
     },
     {
         "merged": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_swap_usb_devices.xml",
         "source": "C:\\Users\\Mark\\.android\\build-cache\\c233878940b292cbbc6187ece08a65ca850c8e26\\output\\res\\layout\\activity_swap_usb_devices.xml"
     },
     {
-        "merged": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\matrix_devices.xml",
-        "source": "C:\\Users\\Mark\\.android\\build-cache\\c233878940b292cbbc6187ece08a65ca850c8e26\\output\\res\\layout\\matrix_devices.xml"
-    },
-    {
         "merged": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_ftc_wifi_channel_selector.xml",
         "source": "C:\\Users\\Mark\\.android\\build-cache\\c233878940b292cbbc6187ece08a65ca850c8e26\\output\\res\\layout\\activity_ftc_wifi_channel_selector.xml"
+    },
+    {
+        "merged": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\matrix_devices.xml",
+        "source": "C:\\Users\\Mark\\.android\\build-cache\\c233878940b292cbbc6187ece08a65ca850c8e26\\output\\res\\layout\\matrix_devices.xml"
     },
     {
         "merged": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\analog_outputs.xml",
@@ -112,24 +112,28 @@
         "source": "C:\\Users\\robot\\.android\\build-cache\\40dd045163758dfb098097d57c6e5e181b7768c8\\output\\res\\layout\\item_list_parent.xml"
     },
     {
-        "merged": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_about.xml",
-        "source": "C:\\Users\\robot\\.android\\build-cache\\40dd045163758dfb098097d57c6e5e181b7768c8\\output\\res\\layout\\activity_about.xml"
+        "merged": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_camera_view.xml",
+        "source": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\FtcRobotController\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_camera_view.xml"
     },
     {
         "merged": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\i2c_device.xml",
         "source": "C:\\Users\\robot\\.android\\build-cache\\40dd045163758dfb098097d57c6e5e181b7768c8\\output\\res\\layout\\i2c_device.xml"
     },
     {
+        "merged": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_about.xml",
+        "source": "C:\\Users\\robot\\.android\\build-cache\\40dd045163758dfb098097d57c6e5e181b7768c8\\output\\res\\layout\\activity_about.xml"
+    },
+    {
         "merged": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_programming_mode.xml",
         "source": "C:\\Users\\Mark\\.android\\build-cache\\50d07d71965d96dfbaf401e1aa5f3c64418a62b5\\output\\res\\layout\\activity_programming_mode.xml"
     },
     {
-        "merged": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\header.xml",
-        "source": "C:\\Users\\robot\\.android\\build-cache\\40dd045163758dfb098097d57c6e5e181b7768c8\\output\\res\\layout\\header.xml"
-    },
-    {
         "merged": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\lynx_module.xml",
         "source": "C:\\Users\\Mark\\.android\\build-cache\\c233878940b292cbbc6187ece08a65ca850c8e26\\output\\res\\layout\\lynx_module.xml"
+    },
+    {
+        "merged": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\header.xml",
+        "source": "C:\\Users\\robot\\.android\\build-cache\\40dd045163758dfb098097d57c6e5e181b7768c8\\output\\res\\layout\\header.xml"
     },
     {
         "merged": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\analog_inputs.xml",
@@ -148,12 +152,12 @@
         "source": "C:\\Users\\Mark\\.android\\build-cache\\c233878940b292cbbc6187ece08a65ca850c8e26\\output\\res\\layout\\button_list.xml"
     },
     {
-        "merged": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_ftc_wifi_remembered_groups.xml",
-        "source": "C:\\Users\\Mark\\.android\\build-cache\\c233878940b292cbbc6187ece08a65ca850c8e26\\output\\res\\layout\\activity_ftc_wifi_remembered_groups.xml"
-    },
-    {
         "merged": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\digital_device.xml",
         "source": "C:\\Users\\robot\\.android\\build-cache\\40dd045163758dfb098097d57c6e5e181b7768c8\\output\\res\\layout\\digital_device.xml"
+    },
+    {
+        "merged": "C:\\Users\\Mark\\IdeaProjects\\2017-Robotics\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_ftc_wifi_remembered_groups.xml",
+        "source": "C:\\Users\\Mark\\.android\\build-cache\\c233878940b292cbbc6187ece08a65ca850c8e26\\output\\res\\layout\\activity_ftc_wifi_remembered_groups.xml"
     },
     {
         "merged": "C:\\Users\\robot\\Downloads\\ftc_app-master-test\\ftc_app-master\\FtcRobotController\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_load.xml",

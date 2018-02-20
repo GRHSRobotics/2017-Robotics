@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.robotcontroller.internal;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.hardware.Camera;
 import android.media.AudioManager;
@@ -8,6 +9,8 @@ import android.media.ToneGenerator;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.io.IOException;
 
@@ -19,10 +22,13 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback {
 
 	private SurfaceHolder mHolder;
 	private Camera mCamera;
+	private Overlay overlay;
 
 	public CameraView(Context context, Camera camera) {
 
 		super(context);
+
+		overlay = ((CameraActivity) context).getOverlay();
 
 		mCamera = camera;
 		mCamera.setDisplayOrientation(90);
@@ -52,13 +58,16 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback {
 					int rgb[] = new int[frameWidth * frameHeight];
 					decodeYUV420SP(rgb, data, frameWidth, frameHeight);
 
+//					overlay.setDrawingCacheEnabled(true);
+//					Bitmap cache = overlay.getDrawingCache();
+//
 					for (int x = 0; x < frameWidth; x++) {
 						for (int y = 0; y < frameHeight; y++) {
 
 							int index = x * y + x; //Finds 1D index of 2D pixel matrix
 
-							if (rgb[index] == Color.rgb(255, 255, 255)) {
-								
+							if (rgb[index] == Color.WHITE) {
+								PixelManager.addPixel(rgb[index]);
 							}
 
 						}
