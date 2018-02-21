@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.robotcontroller.internal;
 
-import java.util.ArrayList;
 
 /**
  * Created by AllTheMegahertz on 2/20/2018.
@@ -8,18 +7,26 @@ import java.util.ArrayList;
 
 public class PixelManager {
 
-	private static ArrayList<Integer> pixels = new ArrayList<>();
+	//Screen dimensions
+	public static final int WIDTH = 1920;
+	public static final int HEIGHT = 1080;
 
-	public static int nextPixel() {
-		return pixels.remove(0);
+	private static int[][] pixels = new int[WIDTH][HEIGHT];
+
+	public static void setPixel(int pixel, int x, int y) {
+		pixels[x][y] = pixel;
 	}
 
-	public static int getAmount() {
-		return pixels.size();
+	public static int getPixel(int x, int y) {
+		return pixels[x][y];
 	}
 
-	public static void addPixel(int pixel) {
-		pixels.add(pixel);
+	public static int[][] getPixels() {
+		return pixels;
+	}
+
+	public static void clear() {
+		pixels = new int[WIDTH][HEIGHT];
 	}
 
 }

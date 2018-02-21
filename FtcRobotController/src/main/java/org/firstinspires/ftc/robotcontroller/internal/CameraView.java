@@ -2,6 +2,7 @@ package org.firstinspires.ftc.robotcontroller.internal;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.hardware.Camera;
 import android.media.AudioManager;
@@ -60,15 +61,14 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback {
 
 //					overlay.setDrawingCacheEnabled(true);
 //					Bitmap cache = overlay.getDrawingCache();
-//
+
 					for (int x = 0; x < frameWidth; x++) {
 						for (int y = 0; y < frameHeight; y++) {
 
 							int index = x * y + x; //Finds 1D index of 2D pixel matrix
 
-							if (rgb[index] == Color.WHITE) {
-								PixelManager.addPixel(rgb[index]);
-							}
+							PixelManager.setPixel(rgb[index], x, y);
+
 
 						}
 					}
