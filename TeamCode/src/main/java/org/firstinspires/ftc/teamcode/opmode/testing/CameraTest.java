@@ -11,6 +11,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.hardware.Camera;
 import android.os.Looper;
+import android.support.annotation.ColorRes;
 import android.widget.FrameLayout;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -20,6 +21,8 @@ import org.firstinspires.ftc.robotcontroller.internal.PixelManager;
 import org.firstinspires.ftc.teamcode.R;
 
 import java.io.*;
+
+import static android.graphics.Color.WHITE;
 
 /**
  * Created by AllTheMegahertz on 2/19/2018.
@@ -50,23 +53,48 @@ public class CameraTest extends OpMode {
 	@Override
 	public void loop() {
 
-		int count = 0;
+		int[][] search = new int[200][150];
+		int[] offset = new int[2];
 
 		int[][] pixels = PixelManager.getPixels();
 		for (int x = 0; x < pixels.length; x++) {
 			for (int y = 0; y < pixels[0].length; y++) {
 
-				if (compareColor(pixels[x][y], ORANGE, 20)) {
-					matches[x][y] = true;
-					count++;
-				} else {
-					matches[x][y] = false;
+				if (x > offset[0] && x < offset[0] + search.length) {
+					if (y > offset[1] && y < offset[1] + search[0].length) {
+
+						search[x - offset[0]][y - offset[1]] = pixels[x][y];
+
+					}
 				}
 
 			}
 		}
 
-		telemetry.addData("count", count);
+		//Run while box has less than 50% white pixels
+		while (search(search, Color.WHITE) || offset[0] == 1920 - search.length && offset[1] == 1080 - search[0].length) {
+
+			if (search(search, Color.WHITE)) {
+				telemetry.addLine("Found at (" + offset[0] + ", " + offset[1] + ")");
+				break;
+			} else {
+
+				if (search[0].length < 1080) {
+					search = new int[search.length + 1][search[0].length + 1];
+				} else {
+					break;
+				}
+
+			}
+
+			if (offset[0]++ > 1920 - search.length) {
+				offset[0] = 0;
+				offset[1]++;
+			}
+
+		}
+
+		telemetry.addLine("Not found");
 		telemetry.update();
 
 	}
@@ -102,6 +130,24 @@ public class CameraTest extends OpMode {
 		while ((read = in.read(buffer)) != -1) {
 			out.write(buffer, 0, read);
 		}
+	}
+
+	private boolean search(int[][] region, int color) {
+
+		int count = 0;
+
+		for (int x = 0; x < region.length; x++) {
+			for (int y = 0; y < region[0].length; y++) {
+
+				if (compareColor(region[x][y], Color.WHITE, 20)) {
+					count++;
+				}
+
+			}
+		}
+
+		return (float) count / (float) (region.length * region[0].length) < 0.5;
+
 	}
 
 }
