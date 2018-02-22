@@ -2,7 +2,9 @@ package org.firstinspires.ftc.teamcode.opmode.autonomous;
 
 import com.qualcomm.robotcore.hardware.*;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.SignIndentifier;
+import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
+import org.firstinspires.ftc.teamcode.SignIdentifier;
+import org.firstinspires.ftc.teamcode.SignThread;
 import org.firstinspires.ftc.teamcode.TeamColor;
 import org.firstinspires.ftc.teamcode.opmode.MotorOpMode;
 import org.firstinspires.ftc.teamcode.opmode.VirtualOpMode;
@@ -27,7 +29,10 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 	private boolean locked = false;
 	private boolean lock2 = false;
 
-	private SignIndentifier signIndentifier;
+	private SignIdentifier signIdentifier;
+	private SignThread signThread;
+	private RelicRecoveryVuMark sign;
+	private boolean signFound = false;
 
 	public BallAutonomous(HardwareMap hardwareMap, Telemetry telemetry, TeamColor teamColor) {
 		this.hardwareMap = hardwareMap;
@@ -55,8 +60,9 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 
 		setServosClosed(true);
 
-		signIndentifier = new SignIndentifier(hardwareMap.appContext);
-		signIndentifier.run();
+		signIdentifier = new SignIdentifier(hardwareMap.appContext);
+		signThread = new SignThread(signIdentifier);
+		signThread.start();
 
 	}
 
@@ -66,6 +72,14 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 
 	@Override
 	public void loop(double runtime) {
+
+		if (!signFound) {
+			signFound = (sign = signIdentifier.getSign()) != RelicRecoveryVuMark.UNKNOWN;
+			telemetry.addLine("Searching for sign...");
+			return;
+		}
+
+		telemetry.addData("Sign", sign.toString());
 
 		if (gyroSensor.isCalibrating()) {
 			time = System.currentTimeMillis() / 1000;
@@ -125,7 +139,7 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 
 		else if (!lock2) {
 
-			signIndentifier.stop();
+			signIdentifier.stop();
 
 			if (rotateToPosition(r)) {
 				colorServo.setPosition(0);
@@ -163,6 +177,7 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 	}
 
 	public void stop() {
+		signThread.stop();
 		setPower(0);
 	}
 
