@@ -104,18 +104,8 @@
         <item>Channel  9 – 2.452 GHz|9</item>
         <item>Channel 10 – 2.457 GHz|10</item>
         <item>Channel 11 – 2.462 GHz|11</item>
-        <!--
-        <item>5GHz, Channel 36</item>
-        <item>5GHz, Channel 40</item>
-        <item>5GHz, Channel 44</item>
-        <item>5GHz, Channel 48</item>
-        -->
-        <!--
-        <item>5GHz, Channel 149</item>
-        <item>5GHz, Channel 153</item>
-        <item>5GHz, Channel 157</item>
-        <item>5GHz, Channel 161</item>
-        -->
+        
+        
     </string-array>
     <attr format="color" name="backgroundAlmostDark"/>
     <attr format="color" name="backgroundDark"/>
@@ -272,14 +262,14 @@
     <string name="appNameUnknown">Unknown Application</string>
     <string name="appThemeChangeRestartNotifyDS">App color scheme has changed. The driver station will restart.</string>
     <string name="appThemeChangeRestartNotifyRC">App color scheme has changed. The robot controller will restart.</string>
-    <string name="app_name">FTC Robot Controller</string>
+    <string name="app_name">GRHS Robot Controller</string>
     <string name="attached">Attached</string>
     <string name="availableConfigListCaption">Available configurations:</string>
     <string name="availableConfigsInfoMessage">These are the configurations the Hardware Wizard was able to find. You can edit each configuration by clicking the edit button. The \'Activate\' button will set that configuration as the current one, which will be used to start the robot.</string>
     <string name="availableModuleListCaption">Available Expansion Hubs:</string>
     <string name="availableTemplateListCaption">Available templates:</string>
     <string name="blocks_activity">Blocks</string>
-    <string name="blocks_menu_item">Blocks</string>
+    <string name="blocks_menu_item">Blocks (don\'t -Mark)</string>
     <string name="buttonExitWithoutSaving">Exit Without Saving</string>
     <string name="buttonNameAdd">Add</string>
     <string name="buttonNameCancel">Cancel</string>
@@ -411,7 +401,7 @@
     <string name="errorParsingConfiguration">"Error parsing configuration: %s"</string>
     <string name="error_text_error">Error: %s</string>
     <string name="error_text_warning">Warning: %s</string>
-    <string name="exit_menu_item">Exit</string>
+    <string name="exit_menu_item">Bye bye</string>
     <string name="expansionHubFirmwareUpdateMessage">Updating Expansion Hub %1$s firmware with \"%2$s\". Please do not unplug.</string>
     <string name="file_activate_button">Activate</string>
     <string name="file_delete_button">Delete</string>
@@ -734,11 +724,10 @@
     <string name="writeXML_prompt">Select an XML file to instantiate a Robot from that file</string>
     <string name="writeXML_text">Press this button to write the current configuration to an XML file</string>
     <style name="AppBaseTheme" parent="android:Theme.Light">
-        <!-- Theme customizations available in newer API levels can go in res/values-vXX/styles.xml,
-        while customizations related to backward-compatibility can go here. -->
+        
     </style>
     <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:textViewStyle">@style/FtcTextViewStyle</item>

@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.opmode.autonomous;
 
 import com.qualcomm.robotcore.hardware.*;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.teamcode.SignIndentifier;
 import org.firstinspires.ftc.teamcode.TeamColor;
 import org.firstinspires.ftc.teamcode.opmode.MotorOpMode;
 import org.firstinspires.ftc.teamcode.opmode.VirtualOpMode;
@@ -25,6 +26,8 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 	private ArrayList<Boolean> tests = new ArrayList<>();
 	private boolean locked = false;
 	private boolean lock2 = false;
+
+	private SignIndentifier signIndentifier;
 
 	public BallAutonomous(HardwareMap hardwareMap, Telemetry telemetry, TeamColor teamColor) {
 		this.hardwareMap = hardwareMap;
@@ -51,6 +54,9 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 		colorServo.setPosition(0);
 
 		setServosClosed(true);
+
+		signIndentifier = new SignIndentifier(hardwareMap.appContext);
+		signIndentifier.run();
 
 	}
 
@@ -118,6 +124,8 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 		}
 
 		else if (!lock2) {
+
+			signIndentifier.stop();
 
 			if (rotateToPosition(r)) {
 				colorServo.setPosition(0);

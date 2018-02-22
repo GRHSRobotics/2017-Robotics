@@ -53,48 +53,50 @@ public class CameraTest extends OpMode {
 	@Override
 	public void loop() {
 
-		int[][] search = new int[200][150];
-		int[] offset = new int[2];
-
 		int[][] pixels = PixelManager.getPixels();
-		for (int x = 0; x < pixels.length; x++) {
-			for (int y = 0; y < pixels[0].length; y++) {
 
-				if (x > offset[0] && x < offset[0] + search.length) {
-					if (y > offset[1] && y < offset[1] + search[0].length) {
+		int[] offset = new int[2];
+		int[][] search = getSearchArea(200, 150, offset, pixels);
 
-						search[x - offset[0]][y - offset[1]] = pixels[x][y];
+		int n = 0;
 
-					}
-				}
 
-			}
-		}
 
 		//Run while box has less than 50% white pixels
-		while (search(search, Color.WHITE) || offset[0] == 1920 - search.length && offset[1] == 1080 - search[0].length) {
+		while (search(search, Color.WHITE) < 0.5 || offset[0] >= 1920 - search.length && offset[1] >= 1080 - search[0].length) {
 
-			if (search(search, Color.WHITE)) {
-				telemetry.addLine("Found at (" + offset[0] + ", " + offset[1] + ")");
-				break;
-			} else {
+			telemetry.addData("Offset", offset[0] + ", " + offset[1]);
+			telemetry.addData("Size", search.length + ", " + search[0].length);
+			telemetry.update();
 
-				if (search[0].length < 1080) {
-					search = new int[search.length + 1][search[0].length + 1];
-				} else {
-					break;
+			if ((offset[0] += 150) >= 1920 - search.length) {
+				offset[0] = 0;
+				if ((offset[1] += 150) >= 1080 - search.length) {
+
+					offset = new int[2];
+
+					if (search[0].length < 1080) {
+						search = getSearchArea(search.length + 200, search[0].length + 100, offset, pixels);
+					} else {
+						break;
+					}
+
 				}
 
 			}
 
-			if (offset[0]++ > 1920 - search.length) {
-				offset[0] = 0;
-				offset[1]++;
-			}
-
 		}
 
-		telemetry.addLine("Not found");
+		if (search(search, Color.WHITE) > 0.5) {
+			telemetry.addLine("Found at (" + offset[0] + ", " + offset[1] + ")");
+		} else {
+			telemetry.addLine("Not found");
+		}
+
+		telemetry.addData("Offset", offset[0] + ", " + offset[1]);
+		telemetry.addData("Size", search.length + ", " + search[0].length);
+		telemetry.addData("White", search(search, Color.WHITE));
+		telemetry.addLine("white pixels:" + n);
 		telemetry.update();
 
 	}
@@ -132,21 +134,40 @@ public class CameraTest extends OpMode {
 		}
 	}
 
-	private boolean search(int[][] region, int color) {
+	private float search(int[][] region, int color) {
 
 		int count = 0;
 
-		for (int x = 0; x < region.length; x++) {
-			for (int y = 0; y < region[0].length; y++) {
+		//Only tests every fourth pixel to decrease runtime
+		for (int x = 0; x < region.length / 4; x++) {
+			for (int y = 0; y < region[0].length / 4; y++) {
 
-				if (compareColor(region[x][y], Color.WHITE, 20)) {
+				if (compareColor(region[x * 4][y * 4], color, 100)) {
 					count++;
 				}
 
 			}
 		}
 
-		return (float) count / (float) (region.length * region[0].length) < 0.5;
+		return (float) count / (float) (region.length * region[0].length);
+
+	}
+
+	private int[][] getSearchArea(int width, int height, int[] offset, int[][] data) {
+
+		int[][] search = new int[width][height];
+
+		for (int x = 0; x < data.length; x++) {
+			for (int y = 0; y < data[0].length; y++) {
+				if (x > offset[0] && x < offset[0] + search.length) {
+					if (y > offset[1] && y < offset[1] + search[0].length) {
+						search[x - offset[0]][y - offset[1]] = data[x][y];
+					}
+				}
+			}
+		}
+
+		return search;
 
 	}
 

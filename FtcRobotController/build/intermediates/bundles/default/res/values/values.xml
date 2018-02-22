@@ -11,10 +11,10 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">5dp</dimen>
     <string name="about_menu_item">About</string>
-    <string name="app_name">FTC Robot Controller</string>
-    <string name="blocks_menu_item">Blocks</string>
+    <string name="app_name">GRHS Robot Controller</string>
+    <string name="blocks_menu_item">Blocks (don\'t -Mark)</string>
     <string name="configure_robot_menu_item">Configure Robot</string>
-    <string name="exit_menu_item">Exit</string>
+    <string name="exit_menu_item">Bye bye</string>
     <string name="inspection_mode_menu_item">Self Inspect</string>
     <string name="packageName">@string/packageNameRobotController</string>
     <string name="program_and_manage_menu_item">Program &amp; Manage</string>
