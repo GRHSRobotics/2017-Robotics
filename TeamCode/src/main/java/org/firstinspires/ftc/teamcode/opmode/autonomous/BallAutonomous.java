@@ -73,10 +73,21 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 	@Override
 	public void loop(double runtime) {
 
+		deltaT = runtime - startTime;
+
 		if (!signFound) {
+
 			signFound = (sign = signIdentifier.getSign()) != RelicRecoveryVuMark.UNKNOWN;
 			telemetry.addLine("Searching for sign...");
+			
+			if (deltaT > 3) {
+				sign = RelicRecoveryVuMark.CENTER;
+				signFound = true;
+				startTime = getRuntime();
+			}
+
 			return;
+
 		}
 
 		telemetry.addData("Sign", sign.toString());
@@ -90,8 +101,6 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 		if (startTime == 0) {
 			startTime = runtime;
 		}
-
-		deltaT = runtime - startTime;
 
 		telemetry.addData("team", teamColor);
 		telemetry.addData("left", leftColorSensor.red() + " " + leftColorSensor.green() + " " + leftColorSensor.blue() + " " + leftColorSensor.toString());
@@ -152,7 +161,15 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 		else if (deltaT < 3) {
 
 			if (rotateToPosition(90)) {
-				setPower(0.3);
+
+				if (sign == RelicRecoveryVuMark.LEFT) {
+					setPower(0.7);
+				} else if (sign == RelicRecoveryVuMark.CENTER) {
+					setPower(0.5);
+				} else if (sign == RelicRecoveryVuMark.RIGHT) {
+					setPower(0.3);
+				}
+
 			}
 
 		}
