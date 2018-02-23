@@ -60,6 +60,7 @@ public class GyroTest extends MotorOpMode {
 		telemetry.addData("heading", heading);
 		telemetry.addData("target", position);
 		telemetry.addData("clamp" , clamp(position + 180, false));
+		telemetry.addData("gravity", imu.getGravity());
 
 		if (heading < high && heading > low) {
 

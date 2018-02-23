@@ -120,7 +120,8 @@ public class MotorDebug extends MotorOpMode {
 		super.stop();
 	}
 
-	private float clamp(float f) {
+	@Override
+	public float clamp(float f) {
 		return Math.max(-1, Math.min(1, f));
 	}
 
