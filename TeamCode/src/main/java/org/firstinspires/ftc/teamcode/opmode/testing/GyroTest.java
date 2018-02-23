@@ -12,8 +12,7 @@ public class GyroTest extends MotorOpMode {
 	private DcMotor motorFrontRight;
 	private DcMotor motorBackLeft;
 	private DcMotor motorBackRight;
-
-	private GyroSensor gyroSensor;
+	
 	private double time;
 	private int spins;
 

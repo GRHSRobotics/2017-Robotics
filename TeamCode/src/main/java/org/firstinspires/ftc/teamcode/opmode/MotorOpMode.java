@@ -43,7 +43,7 @@ public abstract class MotorOpMode extends OpMode {
 		upperRightServo = hardwareMap.servo.get("upperRightServo");
 		lowerRightServo = hardwareMap.servo.get("lowerRightServo");
 
-		gyroSensor = hardwareMap.gyroSensor.get("gyro");
+		gyroSensor = hardwareMap.gyroSensor.get("imu");
 		gyroSensor.calibrate();
 
 	}
