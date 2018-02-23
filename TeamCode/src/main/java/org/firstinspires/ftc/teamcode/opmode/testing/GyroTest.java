@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode.opmode.testing;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.GyroSensor;
 import org.firstinspires.ftc.teamcode.opmode.MotorOpMode;
 
 @Autonomous(name = "GyroTest", group = "default")
@@ -12,20 +11,20 @@ public class GyroTest extends MotorOpMode {
 	private DcMotor motorFrontRight;
 	private DcMotor motorBackLeft;
 	private DcMotor motorBackRight;
-	
+
 	private double time;
 	private int spins;
 
 	@Override
 	public void loop() {
     
-		if (gyroSensor.isCalibrating()) {
+		if (imu.isGyroCalibrated()) {
 			time = System.currentTimeMillis() / 1000;
 			telemetry.addLine("Calibrating gyro...");
 			return;
 		}
 
-		int heading = gyroSensor.getHeading();
+		float heading = imu.getAngularOrientation().firstAngle;
 		double delta = System.currentTimeMillis() / 1000 - time;
 		telemetry.addData("delta", delta);
 
@@ -43,20 +42,20 @@ public class GyroTest extends MotorOpMode {
 
 	}
 
-	public boolean rotateToPosition(int position) {
+	public boolean rotateToPosition(float position) {
 
-		int heading = clamp(gyroSensor.getHeading());
+		float heading = clamp(imu.getAngularOrientation().firstAngle);
 		position = clamp(position + spins * 360, false);
 
 		final int buffer = 10;
 
-		int delta = Math.abs(position - heading);
+		float delta = Math.abs(position - heading);
 		if (delta > 180) {
 			position = 360 - position;
 		}
 
-		int high = position + buffer + spins * 360;
-		int low = position - buffer + spins * 360;
+		float high = position + buffer + spins * 360;
+		float low = position - buffer + spins * 360;
 
 		telemetry.addData("heading", heading);
 		telemetry.addData("target", position);
@@ -91,40 +90,6 @@ public class GyroTest extends MotorOpMode {
 		}
 
 		return false;
-
-	}
-
-	private int clamp(int i) {
-
-		if (i > 360) {
-			spins++;
-			return i - 360;
-		}
-
-		if (i < 0) {
-			spins--;
-			return i + 360;
-		}
-
-		return i;
-
-	}
-
-	private int clamp(int i, boolean b) {
-
-		if (b) {
-			return clamp(i);
-		}
-
-		if (i > 360) {
-			return i - 360;
-		}
-
-		if (i < 0) {
-			return i + 360;
-		}
-
-		return i;
 
 	}
 

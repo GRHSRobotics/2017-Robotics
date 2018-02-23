@@ -96,7 +96,7 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 
 		telemetry.addData("Sign", sign.toString());
 
-		if (gyroSensor.isCalibrating()) {
+		if (imu.isGyroCalibrated()) {
 			time = System.currentTimeMillis() / 1000;
 			telemetry.addLine("Calibrating gyro...");
 			return;

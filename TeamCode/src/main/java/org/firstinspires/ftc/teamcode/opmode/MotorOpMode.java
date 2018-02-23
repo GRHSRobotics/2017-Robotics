@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.opmode;
 
+import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.*;
 
@@ -18,9 +19,9 @@ public abstract class MotorOpMode extends OpMode {
 	private Servo upperRightServo;
 	private Servo lowerRightServo;
 
-	protected GyroSensor gyroSensor;
+	protected BNO055IMU imu;
 
-	protected int target;
+	protected float target;
 
 	private int spins = 0;
 
@@ -43,8 +44,7 @@ public abstract class MotorOpMode extends OpMode {
 		upperRightServo = hardwareMap.servo.get("upperRightServo");
 		lowerRightServo = hardwareMap.servo.get("lowerRightServo");
 
-		gyroSensor = hardwareMap.gyroSensor.get("imu");
-		gyroSensor.calibrate();
+		imu = (BNO055IMU) hardwareMap.i2cDevice.get("imu");
 
 	}
 
@@ -68,28 +68,28 @@ public abstract class MotorOpMode extends OpMode {
 		return motors;
 	}
 
-	public boolean rotateToPosition(int position) {
+	public boolean rotateToPosition(float position) {
 
 		target = position;
 
-		if (gyroSensor.isCalibrating()) {
+		if (imu.isGyroCalibrated()) {
 			time = System.currentTimeMillis() / 1000;
 			telemetry.addLine("Calibrating gyro...");
 			return false;
 		}
 
-		int heading = clamp(gyroSensor.getHeading());
+		float heading = clamp(imu.getAngularOrientation().firstAngle);
 		position = clamp(position + spins * 360, false);
 
 		final int buffer = 10;
 
-		int delta = Math.abs(position - heading);
+		float delta = Math.abs(position - heading);
 		if (delta > 180) {
 			position = 360 - position;
 		}
 
-		int high = position + buffer + spins * 360;
-		int low = position - buffer + spins * 360;
+		float high = position + buffer + spins * 360;
+		float low = position - buffer + spins * 360;
 
 		telemetry.addData("heading", heading);
 		telemetry.addData("target", position);
@@ -129,13 +129,13 @@ public abstract class MotorOpMode extends OpMode {
 
 	public boolean rotate(int position) {
 
-		if (gyroSensor.isCalibrating()) {
+		if (imu.isGyroCalibrated()) {
 			time = System.currentTimeMillis() / 1000;
 			telemetry.addLine("Calibrating gyro...");
 			return false;
 		}
 
-		return rotateToPosition(clamp(gyroSensor.getHeading() + position, false));
+		return rotateToPosition(clamp(imu.getAngularOrientation().firstAngle + position, false));
 	}
 
 	public void enableBreaking(boolean enable) {
@@ -161,37 +161,37 @@ public abstract class MotorOpMode extends OpMode {
 
 	}
 
-	private int clamp(int i) {
+	public float clamp(float f) {
 
-		if (i > 360) {
+		if (f > 360) {
 			spins++;
-			return i - 360;
+			return f - 360;
 		}
 
-		if (i < 0) {
+		if (f < 0) {
 			spins--;
-			return i + 360;
+			return f + 360;
 		}
 
-		return i;
+		return f;
 
 	}
 
-	private int clamp(int i, boolean b) {
+	public float clamp(float f, boolean b) {
 
 		if (b) {
-			return clamp(i);
+			return clamp(f);
 		}
 
-		if (i > 360) {
-			return i - 360;
+		if (f > 360) {
+			return f - 360;
 		}
 
-		if (i < 0) {
-			return i + 360;
+		if (f < 0) {
+			return f + 360;
 		}
 
-		return i;
+		return f;
 
 	}
 
