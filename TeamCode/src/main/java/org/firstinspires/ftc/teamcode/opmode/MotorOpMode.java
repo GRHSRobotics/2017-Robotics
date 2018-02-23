@@ -25,6 +25,7 @@ public abstract class MotorOpMode extends OpMode {
 
 	private int spins = 0;
 
+	//Do not use, override!
 	public void init() {
 		this.init(hardwareMap);
 	}
@@ -44,7 +45,12 @@ public abstract class MotorOpMode extends OpMode {
 		upperRightServo = hardwareMap.servo.get("upperRightServo");
 		lowerRightServo = hardwareMap.servo.get("lowerRightServo");
 
-		imu = (BNO055IMU) hardwareMap.i2cDevice.get("imu");
+		BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
+
+		parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;
+
+		imu = hardwareMap.get(BNO055IMU.class, "imu");
+		imu.initialize(parameters);
 
 	}
 
@@ -72,7 +78,7 @@ public abstract class MotorOpMode extends OpMode {
 
 		target = position;
 
-		if (imu.isGyroCalibrated()) {
+		if (!imu.isGyroCalibrated()) {
 			time = System.currentTimeMillis() / 1000;
 			telemetry.addLine("Calibrating gyro...");
 			return false;

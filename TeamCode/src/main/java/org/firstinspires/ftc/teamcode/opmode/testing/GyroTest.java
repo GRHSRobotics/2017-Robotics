@@ -7,25 +7,25 @@ import org.firstinspires.ftc.teamcode.opmode.MotorOpMode;
 @Autonomous(name = "GyroTest", group = "default")
 public class GyroTest extends MotorOpMode {
 
-	private DcMotor motorFrontLeft;
-	private DcMotor motorFrontRight;
-	private DcMotor motorBackLeft;
-	private DcMotor motorBackRight;
-
 	private double time;
 	private int spins;
 
 	@Override
+	public void init() {
+		super.init(hardwareMap);
+	}
+
+	@Override
 	public void loop() {
     
-		if (imu.isGyroCalibrated()) {
-			time = System.currentTimeMillis() / 1000;
+		if (!imu.isGyroCalibrated()) {
+			time = getRuntime();
 			telemetry.addLine("Calibrating gyro...");
 			return;
 		}
 
 		float heading = imu.getAngularOrientation().firstAngle;
-		double delta = System.currentTimeMillis() / 1000 - time;
+		double delta = getRuntime() - time;
 		telemetry.addData("delta", delta);
 
 		if (delta < 5) {

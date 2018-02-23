@@ -1,6 +1,11 @@
 package org.firstinspires.ftc.teamcode.opmode.autonomous;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Looper;
 import com.qualcomm.robotcore.hardware.*;
+import org.firstinspires.ftc.robotcontroller.internal.CameraActivity;
+import org.firstinspires.ftc.robotcontroller.internal.PixelManager;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
 import org.firstinspires.ftc.teamcode.SignIdentifier;
@@ -9,6 +14,9 @@ import org.firstinspires.ftc.teamcode.TeamColor;
 import org.firstinspires.ftc.teamcode.opmode.MotorOpMode;
 import org.firstinspires.ftc.teamcode.opmode.VirtualOpMode;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 
 public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
@@ -20,8 +28,6 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 	private Telemetry telemetry;
 
 	private Servo colorServo;
-	private ColorSensor rightColorSensor;
-	private ColorSensor leftColorSensor;
 
 	private double startTime = 0;
 	private double deltaT = 0;
@@ -33,6 +39,11 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 	private SignThread signThread;
 	private RelicRecoveryVuMark sign;
 	private boolean signFound = false;
+
+	private Intent cameraIntent;
+	private boolean colorFound = false;
+
+	private int colorMultiplier = 1;
 
 	public BallAutonomous(HardwareMap hardwareMap, Telemetry telemetry, TeamColor teamColor) {
 		this.hardwareMap = hardwareMap;
@@ -48,13 +59,6 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 		enableBreaking(true);
 
 		colorServo = hardwareMap.servo.get("colorServo");
-		rightColorSensor = hardwareMap.colorSensor.get("rightColorSensor");
-		leftColorSensor = hardwareMap.colorSensor.get("leftColorSensor");
-		rightColorSensor.setI2cAddress(I2cAddr.create8bit(0x3c));
-		leftColorSensor.setI2cAddress(I2cAddr.create8bit(0x3c));
-
-		rightColorSensor.enableLed(true);
-		leftColorSensor.enableLed(true);
 
 		colorServo.setPosition(0);
 
@@ -84,40 +88,60 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 			signFound = (sign = signIdentifier.getSign()) != RelicRecoveryVuMark.UNKNOWN;
 			telemetry.addLine("Searching for sign...");
 
-			if (deltaT > 3) {
+			if (sign == RelicRecoveryVuMark.UNKNOWN && deltaT > 3) {
 				sign = RelicRecoveryVuMark.CENTER;
 				signFound = true;
 				startTime = runtime;
 			}
 
+			if (signFound) {
+
+				signThread.stop();
+
+				Looper.prepare();
+
+				cameraIntent = new Intent(hardwareMap.appContext, CameraActivity.class);
+				hardwareMap.appContext.startActivity(cameraIntent);
+
+			}
+
 			return;
+
+		} else if (!colorFound){
+
+			int[][] pixels = PixelManager.getPixels();
+
+			int[] dimensions = new int[] {200, 150};
+			int[] offset = new int[] {pixels.length - dimensions[0], pixels[0].length - dimensions[1]};
+			int[][] search = getSearchArea(dimensions[0], dimensions[1], offset, pixels);
+
+			int[] colors = new int[] {Color.RED, Color.BLUE};
+			if (teamColor == TeamColor.Blue) {
+				colors = new int[] {Color.BLUE, Color.RED};
+			}
+
+			int ballColor = search(search, colors[0], colors[1], 40);
+
+			if (ballColor == 1) {
+				colorMultiplier = 0;
+				return;
+			} else if (ballColor == colors[1]) {
+				colorMultiplier = -1;
+			}
 
 		}
 
 		telemetry.addData("Sign", sign.toString());
 
-		if (imu.isGyroCalibrated()) {
-			time = System.currentTimeMillis() / 1000;
+		if (!imu.isGyroCalibrated()) {
+			time = runtime;
 			telemetry.addLine("Calibrating gyro...");
 			return;
 		}
 
 		telemetry.addData("team", teamColor);
-		telemetry.addData("left", leftColorSensor.red() + " " + leftColorSensor.green() + " " + leftColorSensor.blue() + " " + leftColorSensor.toString());
-		telemetry.addData("right", rightColorSensor.red() + " " + rightColorSensor.green() + " " + rightColorSensor.blue() + " " + rightColorSensor.toString());
 		telemetry.addData("target", target);
-		telemetry.addData("test", leftColorSensor.blue() + rightColorSensor.red() < leftColorSensor.red() + rightColorSensor.blue());
 		telemetry.update();
-
-		if (colorServo.getPosition() != 0 && !(leftColorSensor.blue() == leftColorSensor.red() && rightColorSensor.blue() == rightColorSensor.red()) && deltaT > 2) {
-
-			if (teamColor == TeamColor.Red) {
-				tests.add(leftColorSensor.blue() + rightColorSensor.red() < leftColorSensor.red() + rightColorSensor.blue());
-			} else {
-				tests.add(leftColorSensor.red() + rightColorSensor.blue() < leftColorSensor.blue() + rightColorSensor.red());
-			}
-
-		}
 
 		if (deltaT <= 3 && !locked) {
 			colorServo.setPosition(0.6);
@@ -125,22 +149,7 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 
 		else if (!locked) {
 
-			if (tests.size() == 0) {
-				r = 0;
-				colorServo.setPosition(0);
-				return;
-			}
-
-			int i = 0;
-			for (boolean b : tests) {
-				if (b) {
-					i++;
-				}
-			}
-
-			if ((float) i / (float) tests.size() < 0.5) {
-				r *= -1;
-			}
+			r *= colorMultiplier;
 
 			locked = true;
 
@@ -195,7 +204,88 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 
 	public void stop() {
 		signThread.stop();
+		hardwareMap.appContext.stopService(cameraIntent);
+
 		setPower(0);
+	}
+
+	private static boolean compareColor(int color1, int color2, int tolerance) {
+
+		int r1 = Color.red(color1);
+		int g1 = Color.green(color1);
+		int b1 = Color.blue(color1);
+
+		int r2 = Color.red(color2);
+		int g2 = Color.green(color2);
+		int b2 = Color.blue(color2);
+
+		return Math.abs(r1 - r2) < tolerance && Math.abs(g1 - g2) < tolerance && Math.abs(b1 - b2) < tolerance;
+
+	}
+
+	private static void copyStream(InputStream in, OutputStream out) throws IOException {
+		byte[] buffer = new byte[1024];
+		int read;
+		while ((read = in.read(buffer)) != -1) {
+			out.write(buffer, 0, read);
+		}
+	}
+
+	private int search(int[][] region, int color1, int color2, int tolerance) {
+
+		int count1 = 0;
+
+		//Only tests every fourth pixel to decrease runtime
+		for (int x = 0; x < region.length / 4; x++) {
+			for (int y = 0; y < region[0].length / 4; y++) {
+
+				if (compareColor(region[x * 4][y * 4], color1, tolerance)) {
+					count1++;
+				}
+
+			}
+		}
+
+		int count2 = 0;
+
+		//Only tests every fourth pixel to decrease runtime
+		for (int x = 0; x < region.length / 4; x++) {
+			for (int y = 0; y < region[0].length / 4; y++) {
+
+				if (compareColor(region[x * 4][y * 4], color2, tolerance)) {
+					count2++;
+				}
+
+			}
+		}
+
+		//Numbers too close to be confident
+		if (count1 > count2 && count1 * 0.75 <= count2) {
+			return 1;
+		} else if (count1 > count2) {
+			return color1;
+		} else {
+			return color2;
+		}
+
+	}
+
+	private int[][] getSearchArea(int width, int height, int[] offset, int[][] data) {
+
+		int[][] search = new int[width][height];
+
+		for (int x = 0; x < data.length; x++) {
+			for (int y = 0; y < data[0].length; y++) {
+				if (x > offset[0] && x < offset[0] + search.length) {
+					if (y > offset[1] && y < offset[1] + search[0].length) {
+						search[x - offset[0]][y - offset[1]] = data[x][y];
+					}
+				}
+			}
+		}
+
+		return search;
+
 	}
 
 }

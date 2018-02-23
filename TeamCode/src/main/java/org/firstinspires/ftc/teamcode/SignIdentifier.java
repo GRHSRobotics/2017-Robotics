@@ -173,7 +173,13 @@ public class SignIdentifier {
 	}
 
 	public RelicRecoveryVuMark getSign() {
+
+    	if (vuMark == null) {
+    		return RelicRecoveryVuMark.UNKNOWN;
+		}
+
     	return vuMark;
+
 	}
 
 }
