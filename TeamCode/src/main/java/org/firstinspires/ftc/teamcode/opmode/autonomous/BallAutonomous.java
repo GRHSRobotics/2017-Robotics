@@ -73,17 +73,21 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 	@Override
 	public void loop(double runtime) {
 
+		if (startTime == 0) {
+			startTime = runtime;
+		}
+
 		deltaT = runtime - startTime;
 
 		if (!signFound) {
 
 			signFound = (sign = signIdentifier.getSign()) != RelicRecoveryVuMark.UNKNOWN;
 			telemetry.addLine("Searching for sign...");
-			
+
 			if (deltaT > 3) {
 				sign = RelicRecoveryVuMark.CENTER;
 				signFound = true;
-				startTime = getRuntime();
+				startTime = runtime;
 			}
 
 			return;
@@ -96,10 +100,6 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 			time = System.currentTimeMillis() / 1000;
 			telemetry.addLine("Calibrating gyro...");
 			return;
-		}
-
-		if (startTime == 0) {
-			startTime = runtime;
 		}
 
 		telemetry.addData("team", teamColor);
