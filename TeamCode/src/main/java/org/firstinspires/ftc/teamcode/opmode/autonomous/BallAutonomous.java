@@ -107,7 +107,7 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 
 			return;
 
-		} else if (!colorFound){
+		} else if (!colorFound) {
 
 			int[][] pixels = PixelManager.getPixels();
 
@@ -127,6 +127,7 @@ public class BallAutonomous extends MotorOpMode implements VirtualOpMode {
 				return;
 			} else if (ballColor == colors[1]) {
 				colorMultiplier = -1;
+				colorFound = true;
 			}
 
 		}

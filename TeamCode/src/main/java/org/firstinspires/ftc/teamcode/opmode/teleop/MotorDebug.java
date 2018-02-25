@@ -8,41 +8,21 @@ import org.firstinspires.ftc.teamcode.opmode.MotorOpMode;
 public class MotorDebug extends MotorOpMode {
 
 	private DcMotor motorArm;
-	private Servo upperLeftServo;
-	private Servo lowerLeftServo;
-	private Servo upperRightServo;
-	private Servo lowerRightServo;
 	private Servo colorServo;
-	private ColorSensor leftColorSensor;
-	private ColorSensor rightColorSensor;
-
-	private org.firstinspires.ftc.teamcode.Gamepad currentGamepad;
-	private org.firstinspires.ftc.teamcode.Gamepad previousGamepad;
 
 	private int previousPosition;
 
 	@Override
 	public void init() {
 
+		super.init(hardwareMap);
+
 		motorArm = hardwareMap.dcMotor.get("motorArm");
 		motorArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 		//REMEMBER THE INDICES THING
-		upperLeftServo = hardwareMap.servo.get("upperLeftServo");
-		lowerLeftServo = hardwareMap.servo.get("lowerLeftServo");
-		upperRightServo = hardwareMap.servo.get("upperRightServo");
-		lowerRightServo = hardwareMap.servo.get("lowerRightServo");
 		colorServo = hardwareMap.servo.get("colorServo");
 
-		rightColorSensor = hardwareMap.colorSensor.get("rightColorSensor");
-		leftColorSensor = hardwareMap.colorSensor.get("leftColorSensor");
-		rightColorSensor.setI2cAddress(I2cAddr.create8bit(0x3c));
-		leftColorSensor.setI2cAddress(I2cAddr.create8bit(0x3e));
-
-		rightColorSensor.enableLed(true);
-		leftColorSensor.enableLed(true);
-
-		currentGamepad = new org.firstinspires.ftc.teamcode.Gamepad(gamepad1);
 		previousPosition = motorArm.getCurrentPosition();
 
 	}
@@ -50,12 +30,7 @@ public class MotorDebug extends MotorOpMode {
 	@Override
 	public void loop() {
 
-		super.init(hardwareMap);
-
 		colorServo.setPosition(0);
-
-		com.qualcomm.robotcore.hardware.Gamepad gamepad = currentGamepad.getGamepad();
-
 		motorFrontLeft.setPower(clamp(gamepad1.left_stick_y - gamepad1.left_stick_x));
 		motorFrontRight.setPower(clamp(-gamepad1.right_stick_y - gamepad1.right_stick_x));
 		motorBackLeft.setPower(clamp(gamepad1.left_stick_y + gamepad1.left_stick_x));
@@ -105,17 +80,12 @@ public class MotorDebug extends MotorOpMode {
 //		telemetry.addData("time", getRuntime());
 //
 //		telemetry.update();
-
-		previousGamepad = new org.firstinspires.ftc.teamcode.Gamepad(gamepad1);
 		
 	}
 
 	@Override
 	public void stop() {
-		motorBackLeft.setPower(0);
-		motorBackRight.setPower(0);
-		motorFrontLeft.setPower(0);
-		motorFrontRight.setPower(0);
+		setPower(0);
 		motorArm.setPower(0);
 		super.stop();
 	}

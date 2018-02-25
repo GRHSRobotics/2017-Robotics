@@ -3,12 +3,12 @@
 
     <item
         is-multidex="false"
-        jar="C:\Users\robot\Downloads\ftc_app-master-test\ftc_app-master\FtcRobotController\build\intermediates\bundles\default\classes.jar"
+        jar="C:\Users\Mark\IdeaProjects\2017-Robotics\FtcRobotController\build\intermediates\bundles\default\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.3"
         sha1="567db73a71b31760fbb30940822770e93c72960f">
-        <dex dex="C:\Users\robot\Downloads\ftc_app-master-test\ftc_app-master\TeamCode\build\intermediates\pre-dexed\debug\classes_5abae39cc4319471eeefa53f9c3d0d2709017aa4.jar" />
+        <dex dex="C:\Users\Mark\IdeaProjects\2017-Robotics\TeamCode\build\intermediates\pre-dexed\debug\classes_19507563bfe186a61c48e856674d53151fae5172.jar" />
     </item>
 
 </items>
